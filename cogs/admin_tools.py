@@ -8,7 +8,7 @@ class admin_Tools(discord.ext.commands.Cog):
         self.client = client
     print("admin_tools initialized")
 
-    @client.event()
+    @client.Cog.listener()
     async def on_ready():
         print('admin_tools loaded!')
 
