@@ -3,10 +3,11 @@
 
 print('ummmmm')
 
-# import os
-# Token = os.getenv("token")
-# print(Token)
-# print('okay this works')
+import os
+Token = os.getenv("token")
+
+print(Token)
+print('okay this works')
 
 
 # import discord
