@@ -36,7 +36,7 @@ async def dexter(ctx): #H E L P
 
 @client.command()
 async def reac(ctx):
-    users = discord.Message.reactions
+    users = discord.Message.reactions.count()
     await ctx.send(users)
 
 #commands to dev 
