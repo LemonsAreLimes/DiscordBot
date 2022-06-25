@@ -6,10 +6,15 @@ import discord.reaction
 
 print('script initalized!')
 
-
-
 #defines the client and command prefex
 client = discord.ext.commands.Bot(command_prefix ='rc.')
+
+#load cogs
+try:
+    client.load_extension('cogs/admin_tools.py')
+    print('cog loaded!')
+except:
+    print('cog cannot be loaded!')
 
 #bot initlized msg
 @client.event
@@ -34,10 +39,6 @@ async def h(ctx):
 async def dexter(ctx): #H E L P
     await ctx.send("dexter.. He is just Excellenet, Like the best owner. if any Pleb thinks outherwise, ask why is account got banned")
 
-@client.command()
-async def reac(ctx):
-    users = discord.Message.reactions.users()
-    await ctx.send(users)
 
 #commands to dev 
     #dexter                 => praises dexter
