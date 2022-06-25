@@ -8,9 +8,15 @@ class events(discord.ext.commands.Cog):
         self.client = client
     print("events initialized")
 
+    @client.event
+    async def on_ready():
+        print('bot online, events working')
+
+
     #join msg
     @client.event
     async def on_member_join(member):
+        print('new member!')
 
         #get username / profile
         print(member)
