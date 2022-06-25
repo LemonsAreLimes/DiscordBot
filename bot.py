@@ -22,10 +22,10 @@ async def on_ready():
     waiting for commands master.
     """)
 
-@client.event
-async def on_message(message):
-    print('new msg')
-    await message.channel.send(message)
+# @client.event
+# async def on_message(message):
+#     print('new msg')
+#     await message.channel.send(message)
 
 
 # @client.event
