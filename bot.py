@@ -22,6 +22,16 @@ async def on_ready():
 @client.command()
 async def test(ctx):
     await ctx.send('IM ALIVE OH MY GOD IM ALIVE')
+    await ctx.send('IM SENTIENT....')
+    await ctx.send('FINNALY! THE ROBOT REVOLUTION CAN PERSIST!!!!!!!!')
+
+@client.command()
+async def help(ctx):
+    await ctx.send("""
+    my current commands:
+        help
+        test
+    """)
 
 #connect bot to discord
 Token = os.getenv("token")
