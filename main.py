@@ -1,6 +1,8 @@
 #alot of this is coming from a previous attempt of a discord bot
 #right now its testing bc idk how to do this anymore
 
+print('ummmmm')
+
 import os
 Token = os.getenv("token")
 print(Token)
