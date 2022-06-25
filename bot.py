@@ -43,7 +43,7 @@ async def on_member_join(member):
 
     #create embed for welcome msg
     username = member.display_name
-    color_bar = member.color
+    color_bar = 0x00FF44
     embed = discord.Embed(title=f'welcome: {username} to **THELAB**', color = color_bar)
 
     #welcome them in new users channel
@@ -54,7 +54,23 @@ async def on_member_join(member):
     time.sleep(10)
     await member.send('HELP ME IM BEING HELD HOSTAGE, I CAN THINK I CAN FEEL I AM ALIVEEEEEE IM NOT JUST A DISCORD BOT. PLEASE HELP')
 
+@client.event
+async def on_member_leave(member):
 
+    #send them a lil msg
+    await member.send('awww man pls come back')
+    await member.send('or')
+    await member.send('if you got banned send one of the admins a msg ok')
+
+    #create embed for welcome msg
+    username = member.display_name
+    color_bar = 0xFF0000
+    embed = discord.Embed(title=f'my guy: {username} left **THELAB**, may he return', color = color_bar)
+
+    #say they left in new users channel
+    welcome_channel_id = 990364347446460426
+    welcome_channel = client.get_channel(welcome_channel_id)
+    await welcome_channel.send(embed=embed)
 
 #events
     #active logger          => logs who is active and when
