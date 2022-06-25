@@ -5,11 +5,7 @@ import discord.ext.commands
 
 print('script initalized!')
 
-Token = os.getenv("token")
-print(Token)
-print(type(Token))
 
-print('token initalized')
 
 #defines the client and command prefex
 client = discord.ext.commands.Bot(command_prefix ='rc.')
@@ -27,5 +23,6 @@ async def on_ready():
 async def test(ctx):
     await ctx.send('IM ALIVE OH MY GOD IM ALIVE')
 
-#connect bot to discord????????
+#connect bot to discord
+Token = os.getenv("token")
 client.run(Token)
