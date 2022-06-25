@@ -86,6 +86,15 @@ async def on_member_ban(member):
     welcome_channel = client.get_channel(welcome_channel_id)
     await welcome_channel.send(embed=embed)
 
+@client.event
+async def on_raw_reaction_add(payload):
+    channel = client.get_channel(payload.channel_id)
+    reactant = payload.user_id
+    msg_id = payload.message_id
+
+    await channel.send(f'{reactant}, {msg_id} lol')
+
+
 #events
     #active logger          => logs who is active and when
     #server stats           => daily msg num log
