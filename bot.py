@@ -25,8 +25,9 @@ async def test(ctx):
     await ctx.send('IM SENTIENT....')
     await ctx.send('FINNALY! THE ROBOT REVOLUTION CAN PERSIST!!!!!!!!')
 
+#help command
 @client.command()
-async def help(ctx):
+async def h(ctx):
     await ctx.send("""
     my current commands:
         help
