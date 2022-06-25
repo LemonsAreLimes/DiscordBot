@@ -93,7 +93,7 @@ async def on_raw_reaction_add(payload):
 
     #check if the reaction was the verify msg
     if payload.channel_id == channel_id:
-        user = discord.Guild.get_member(payload.user_id)
+        user = discord.Guild.get_member(user_id=payload.user_id)
 
         visitor_role = discord.utils.get(user.guild.roles, id = 990039706576252998)
         person_role = discord.utils.get(user.guild.roles, id = 990039829779742760)
