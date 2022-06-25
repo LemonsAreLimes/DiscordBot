@@ -23,35 +23,22 @@ async def on_ready():
     """)
 
 @client.event
-async def on_message(message, ctx):
+async def on_message(message):
     print('new msg')
+    await greeting_msg(message)
+
+async def greeting_msg(self, ctx, message):
     await ctx.send(message)
 
-#commands to dev 
-    #dexter                 => praises dexter
-    #reaction roles         => self-explanitory
-    #greeting message       => rand gen
-    #avatar                 => gets avatar from user
+# @client.event
+# async def on_member_join(member):
+
+
+#events
     #active logger          => logs who is active and when
     #server stats           => daily msg num log
-
-    #yt-dl                  => provides link to download youtube video
-    #meme                   => yoinks from r/dankmemes
-    #insult                 => grabs random quote from list
-
-    #deepdream              => google deepdream and uses whatever image link provided
-    #music                  => in vc.. from yt
-    #chatbot                => uses either cleverbot or replika idk bc its prolly gonna use headless chromedriver mabey
-        
-    #admin tools
-        #mute               => changes roles
-        #purge              => deletes messages
-    #games w/ currency sys
-        #gesser             => 50/50 channce
-        #blackjack          
-        #roulette           => significantly lower chance
-        #connect4           => no clue how im going to do this 
-        #buy_role           => kinda act like levels
+    #reaction roles         => self-explanitory
+    #greeting message       => rand gen
 
 
 #connect bot to discord
