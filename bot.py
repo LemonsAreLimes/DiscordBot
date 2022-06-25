@@ -89,10 +89,10 @@ async def on_member_ban(member):
 @client.event
 async def on_raw_reaction_add(payload):
 
-    msg_id = 989984394578108447
+    channel_id = 989984394578108447
 
     #check if the reaction was the verify msg
-    if payload.message_id == msg_id:
+    if payload.channel_id == channel_id:
         user = client.get_user(payload.user_id)
 
         visitor_role = discord.utils.get(user.guild.roles, id = 990039706576252998)
