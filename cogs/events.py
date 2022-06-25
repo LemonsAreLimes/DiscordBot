@@ -8,12 +8,17 @@ class events(discord.ext.commands.Cog):
         self.client = client
     print("events initialized")
 
+    #doesnt seem to work
     @client.event
     async def on_ready():
         print('bot online, events working')
 
+    #might be easier to test idk
+    @client.event
+    async def on_message(message):
+        print('new msg detected!')
 
-    #join msg
+    #join msg not working either
     @client.event
     async def on_member_join(member):
         print('new member!')
