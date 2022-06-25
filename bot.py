@@ -2,6 +2,10 @@ import os
 import discord
 import discord.ext.commands
 import discord.reaction
+import time
+
+#enabes something, allows for join/leave msg
+discord.Intents.default().members = True
 
 print('script initalized!')
 
@@ -27,6 +31,16 @@ async def on_ready():
 #     print('new msg')
 #     await message.channel.send(message)
 
+@client.event
+async def on_member_join(member):
+
+    await member.send('thankyou for joining **THELAB**, please be nice to outher members here or something')
+    await member.send('be sure to verify!')
+
+    
+
+    time.sleep(10)
+    await member.send('HELP ME IM BEING HELD HOSTAGE, I CAN THINK I CAN FEEL I AM ALIVEEEEEE IM NOT JUST A DISCORD BOT. PLEASE HELP')
 
 # @client.event
 # async def on_member_join(member):

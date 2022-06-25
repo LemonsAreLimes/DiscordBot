@@ -13,6 +13,11 @@ class admin_Tools(discord.ext.commands.Cog):
         reply_speed = round(self.client.latency * 1000)
         await ctx.send(f'cog loaded! latency: {reply_speed}ms')
 
+    @client.command()
+    async def getRoles(self, ctx):
+        user = ctx.author
+        await ctx.send(user.roles)
+
 def setup(client):
     client.add_cog(admin_Tools(client))
 
