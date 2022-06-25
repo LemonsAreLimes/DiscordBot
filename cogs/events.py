@@ -9,7 +9,7 @@ class events(discord.ext.commands.Cog):
     print("events initialized")
 
 #join msg
-@client.event
+@client.event(discord.on_member_join)
 async def on_member_join(member):
 
     #get username / profile
