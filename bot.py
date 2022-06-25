@@ -10,21 +10,21 @@ print(Token)
 print('okay this works')
 
 
-# import discord
-# import discord.ext.commands
+import discord
+import discord.ext.commands
 
-# client = discord.ext.commands.Bot(command_prefix ='rc.')
+client = discord.ext.commands.Bot(command_prefix ='rc.')
 
-# #i have no clue what this does
-# @client.event
+#i have no clue what this does
+@client.event
 
-# async def on_ready():
-#     print("""
-#     bot initialized...
-#     waiting for commands master.
-#     """)
+async def on_ready():
+    print("""
+    bot initialized...
+    waiting for commands master.
+    """)
 
-# @client.command()
+@client.command()
 
-# async def test(ctx):
-#     await ctx.send('IM ALIVE OH MY GOD IM ALIVE')
+async def test(ctx):
+    await ctx.send('IM ALIVE OH MY GOD IM ALIVE')
