@@ -1,6 +1,5 @@
 import discord
 import discord.ext.commands
-from matplotlib.pyplot import title
 
 client = discord.ext.commands.Bot(command_prefix="rc.")
 
