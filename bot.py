@@ -12,7 +12,6 @@ client = discord.ext.commands.Bot(command_prefix ='rc.')
 print('loading cogs')
 client.load_extension('cogs.admin_tools')
 client.load_extension('cogs.stuff')
-client.load_extension('cogs.events')
 print('done loading cogs!')
 
 #bot initlized msg
@@ -23,10 +22,10 @@ async def on_ready():
     waiting for commands master.
     """)
 
-# @client.event
-# async def on_message(ctx, message):
-#     print('new msg')
-#     await ctx.send(message)
+@client.event
+async def on_message(message, ctx):
+    print('new msg')
+    await ctx.send(message)
 
 #commands to dev 
     #dexter                 => praises dexter
