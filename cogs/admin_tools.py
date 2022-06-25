@@ -9,10 +9,21 @@ class admin_Tools(discord.ext.commands.Cog):
     print("admin_tools initialized")
 
     @client.command()
-    async def test(ctx):
-        # author = ctx.message.author
-        # avatar = author.avatar_url
-        await ctx.send('cog loaded!')
+    async def test(self, ctx):
+        reply_speed = round(self.client.latency * 1000)
+        await ctx.send(f'cog loaded! latency: {reply_speed}ms')
 
 def setup(client):
     client.add_cog(admin_Tools(client))
+
+
+#commands to dev 
+    #events 
+        #greeting message       => rand gen
+        #server stats           => daily msg num log
+        #reaction roles         => self-explanitory
+        #active logger          => logs who is active and when
+        
+    #admin tools
+        #mute               => changes roles
+        #purge              => deletes messages
