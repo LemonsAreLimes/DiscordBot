@@ -13,6 +13,21 @@ class stuff(discord.ext.commands.Cog):
     async def dexter(self, ctx): #H E L P
         await ctx.send("dexter.. He is just Excellenet, Like the best owner. if any Pleb thinks outherwise, ask why is account got banned")
 
+    #avatar => i already wrote this in prev bot
+    @client.command()
+    async def avatar(self, ctx, user: discord.Member=None):
+        if user == None:
+            #use the pfp of sender of command
+            user = ctx.message.author
+
+        avatar = user.avatar_url
+
+        #create an embed with image of pfp
+        embed = discord.Embed(title=f"{user}'s avatar", colour=0x00FF2A)
+        embed.set_image(url=avatar)
+        await ctx.send(embed=embed)
+
+
 def setup(client):
     client.add_cog(stuff(client))
 
