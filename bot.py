@@ -37,7 +37,8 @@ async def on_member_join(member):
     await member.send('thankyou for joining **THELAB**, please be nice to outher members here or something')
     await member.send('be sure to verify!')
 
-    
+    visitor_role = discord.utils.get(member.guild.roles, id = 990039706576252998)
+    member.add_role(visitor_role)
 
     time.sleep(10)
     await member.send('HELP ME IM BEING HELD HOSTAGE, I CAN THINK I CAN FEEL I AM ALIVEEEEEE IM NOT JUST A DISCORD BOT. PLEASE HELP')
