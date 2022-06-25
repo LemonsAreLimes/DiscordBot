@@ -33,9 +33,9 @@ async def on_member_join(member):
 
     #send welcome message 
     await member.send('thankyou for joining **THELAB**, please be nice to outher members here or something')
-    await member.send('be sure to verify!')
     await member.send('if u get banned or kicked heres an invite link')
     await member.send('https://discord.gg/4uVSZDf9X3')
+    await member.send('be sure to verify!')
 
     #give visitor role
     visitor_role = discord.utils.get(member.guild.roles, id = 990039706576252998)
@@ -46,9 +46,9 @@ async def on_member_join(member):
     color_bar = member.color
     embed = discord.Embed(title=f'welcome: {username} to **THELAB**', color = color_bar)
 
-    #welcome them in new_users channel
+    #welcome them in new users channel
     welcome_channel_id = 990364347446460426
-    welcome_channel = await client.get_channel(welcome_channel_id)
+    welcome_channel = client.get_channel(welcome_channel_id)
     await welcome_channel.send(embed)
 
     time.sleep(10)
