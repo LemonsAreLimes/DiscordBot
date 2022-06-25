@@ -8,11 +8,6 @@ class admin_Tools(discord.ext.commands.Cog):
         self.client = client
     print("admin_tools initialized")
 
-    @client.Cog.listener()
-    async def on_ready():
-        print('admin_tools loaded!')
-
-
     @client.command()
     async def test(ctx):
         # author = ctx.message.author
