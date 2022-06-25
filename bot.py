@@ -23,6 +23,11 @@ async def on_ready():
     waiting for commands master.
     """)
 
+@client.event
+async def on_message(ctx, message):
+    print('new msg')
+    await ctx.send(message)
+
 #commands to dev 
     #dexter                 => praises dexter
     #reaction roles         => self-explanitory
