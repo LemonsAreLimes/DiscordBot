@@ -1,1 +1,1 @@
-heroku buildpack: set heroku/python
+woker: python bot.py
