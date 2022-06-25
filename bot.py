@@ -25,10 +25,8 @@ async def on_ready():
 @client.event
 async def on_message(message):
     print('new msg')
-    await greeting_msg(message)
+    await message.send(message)
 
-async def greeting_msg(self, ctx, message):
-    await ctx.send(message)
 
 # @client.event
 # async def on_member_join(member):
