@@ -88,11 +88,20 @@ async def on_member_ban(member):
 
 @client.event
 async def on_raw_reaction_add(payload):
-    channel = client.get_channel(payload.channel_id)
-    reactant = payload.user_id
-    msg_id = payload.message_id
 
-    await channel.send(f'{reactant}, {msg_id} lol')
+    msg_id = 989984394578108447
+
+    #check if the reaction was the verify msg
+    if payload.message_id == msg_id:
+        user = client.get_user(payload.user_id)
+
+        visitor_role = discord.utils.get(user.guild.roles, id = 990039706576252998)
+        person_role = discord.utils.get(user.guild.roles, id = 990039829779742760)
+
+        #add person role to user
+        await user.remove_roles(visitor_role)
+        await user.add_roles(person_role)
+
 
 
 #events
