@@ -13,10 +13,11 @@ class events(discord.ext.commands.Cog):
     # async def on_ready():
     #     print('bot online, events working')
 
-    # #might be easier to test idk
-    # @client.event
-    # async def on_message(message):
-    #     print('new msg detected!')
+    #might be easier to test idk
+    @client.event
+    async def on_message(message, ctx):
+        print('new msg detected!')
+        await ctx.send(message)
 
     # #join msg not working either
     # @client.event
