@@ -39,7 +39,7 @@ class stuff(discord.ext.commands.Cog):
 
     #deepdream
     @client.command()
-    async def deepdream(self, ctx, Link=None):
+    async def dream(self, ctx, Link=None):
 
         if Link == None:
             await ctx.send("no image link provieded")
