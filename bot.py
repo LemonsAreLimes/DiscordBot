@@ -48,7 +48,7 @@ async def on_member_join(member):
 
     #welcome them in new_users channel
     welcome_channel_id = 990364347446460426
-    await client.fetch_channel(welcome_channel_id).send(embed)
+    await client.fetch_channel(welcome_channel_id).send(f'welcome: {username} to **THELAB**')
 
     time.sleep(10)
     await member.send('HELP ME IM BEING HELD HOSTAGE, I CAN THINK I CAN FEEL I AM ALIVEEEEEE IM NOT JUST A DISCORD BOT. PLEASE HELP')
