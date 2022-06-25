@@ -10,11 +10,9 @@ print('script initalized!')
 client = discord.ext.commands.Bot(command_prefix ='rc.')
 
 #load cogs
-try:
-    client.load_extension('cogs/admin_tools.py')
-    print('cog loaded!')
-except:
-    print('cog cannot be loaded!')
+print('loading cogs')
+client.load_extension('cogs.admin_tools')
+print('done loading cogs!')
 
 #bot initlized msg
 @client.event
