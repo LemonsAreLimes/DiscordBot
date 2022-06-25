@@ -24,7 +24,7 @@ class stuff(discord.ext.commands.Cog):
         avatar = user.avatar_url
 
         #create an embed with image of pfp
-        embed = discord.Embed(title=f"{user}'s avatar", colour=0x00FF2A)
+        embed = discord.Embed(title=f"{user}'s avatar", colour=0xA900FF)
         embed.set_image(url=avatar)
         await ctx.send(embed=embed)
 
@@ -58,7 +58,7 @@ class stuff(discord.ext.commands.Cog):
                 sender = ctx.message.author
                 image = dest['output_url']
 
-                embed = discord.Embed(title=f"{sender}'s deepdream", description="this image will disapear soon", colour=0x00FF2A)
+                embed = discord.Embed(title=f"{sender}'s deepdream", description="this image will disapear soon", colour=0xA900FF)
                 embed.set_image(url=image)
                 await ctx.send(embed=embed)
 
@@ -69,7 +69,7 @@ class stuff(discord.ext.commands.Cog):
                 sender = ctx.message.author
                 image = dest['output_url']
 
-                embed = discord.Embed(title=f"{sender}'s deepdream", description="this image will disapear soon", colour=0x00FF2A)
+                embed = discord.Embed(title=f"{sender}'s deepdream", description="this image will disapear soon", colour=0xA900FF)
                 embed.set_image(url=image)
                 await ctx.send(embed=embed)
 
