@@ -5,12 +5,13 @@ import discord.reaction
 import time
 
 #enabes something, allows for join/leave msg
-allow_member = discord.Intents.default().members = True
+Intents = discord.Intents.default()
+Intents.members = True
 
 print('script initalized!')
 
 #defines the client and command prefex
-client = discord.ext.commands.Bot(command_prefix ='rc.', intents = allow_member)
+client = discord.ext.commands.Bot(command_prefix ='rc.', intents = Intents)
 
 #load cogs
 print('loading cogs')
