@@ -12,6 +12,7 @@ client = discord.ext.commands.Bot(command_prefix ='rc.')
 print('loading cogs')
 client.load_extension('cogs.admin_tools')
 client.load_extension('cogs.stuff')
+client.load_extension('cogs.events')
 print('done loading cogs!')
 
 #bot initlized msg

@@ -17,13 +17,8 @@ def setup(client):
     client.add_cog(admin_Tools(client))
 
 
-#commands to dev 
-    #events 
-        #greeting message       => rand gen
-        #server stats           => daily msg num log
-        #reaction roles         => self-explanitory
-        #active logger          => logs who is active and when
-        
-    #admin tools
-        #mute               => changes roles
-        #purge              => deletes messages
+#admin tools
+    #mute               => changes roles
+    #purge              => deletes messages
+    #ban
+    #kick
