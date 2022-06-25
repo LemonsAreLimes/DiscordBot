@@ -25,7 +25,7 @@ async def on_ready():
 @client.event
 async def on_message(message):
     print('new msg')
-    await message.send(message)
+    await message.channel.send(message)
 
 
 # @client.event
