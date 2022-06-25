@@ -93,14 +93,15 @@ async def on_raw_reaction_add(payload):
 
     #check if the reaction was the verify msg
     if payload.channel_id == channel_id:
-        user = client.get_user(payload.user_id)
+        user = discord.Guild.get_member(payload.user_id)
 
-        visitor_role = discord.utils.get(discord.Guild.roles, id = 990039706576252998)
-        person_role = discord.utils.get(discord.Guild.roles, id = 990039829779742760)
+        visitor_role = discord.utils.get(user.guild.roles, id = 990039706576252998)
+        person_role = discord.utils.get(user.guild.roles, id = 990039829779742760)
 
         #add person role to user
-        await user.remove_roles(visitor_role)
         await user.add_roles(person_role)
+        await user.remove_roles(visitor_role)
+        
 
 
 
