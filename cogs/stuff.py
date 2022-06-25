@@ -1,5 +1,6 @@
 import discord
 import discord.ext.commands
+import requests #used for deepdream and meme
 
 client = discord.ext.commands.Bot(command_prefix="rc.")
 
@@ -26,6 +27,53 @@ class stuff(discord.ext.commands.Cog):
         embed = discord.Embed(title=f"{user}'s avatar", colour=0x00FF2A)
         embed.set_image(url=avatar)
         await ctx.send(embed=embed)
+
+    #youtube download link
+    @client.command()
+    async def ytdl(self, ctx, video_link=None):
+        if video_link == None:
+            await ctx.send('no youtube link provided!')
+
+        video_link = f'{video_link[:19]}pp{video_link[19:]}'
+        await ctx.send(str(video_link))
+
+    #deepdream
+    @client.command()
+    async def deepdream(self, ctx, Link=None):
+
+        if Link == None:
+            await ctx.send("no image link provieded")
+        else:
+            #send image to google deepdream
+            r = requests.post(
+            "https://api.deepai.org/api/deepdream",
+            data={'image':Link,},
+            headers={'api-key': 'fc7ab6e9-055d-4967-bcfc-d9f754c97bc1'})
+    
+            #get the response
+            dest = r.json()
+            if "output_url" in str(dest):
+
+                #create embed with image dest on it
+                sender = ctx.message.author
+                image = dest['output_url']
+
+                embed = discord.Embed(title=f"{sender}'s deepdream", description="this image will disapear soon", colour=0x00FF2A)
+                embed.set_image(url=image)
+                await ctx.send(embed=embed)
+
+            else:
+                await ctx.send("Something went wrong")
+
+                #create embed with image dest on it
+                sender = ctx.message.author
+                image = dest['output_url']
+
+                embed = discord.Embed(title=f"{sender}'s deepdream", description="this image will disapear soon", colour=0x00FF2A)
+                embed.set_image(url=image)
+                await ctx.send(embed=embed)
+
+
 
 
 def setup(client):
