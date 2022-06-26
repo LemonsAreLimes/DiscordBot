@@ -27,8 +27,13 @@ class admin_Tools(discord.ext.commands.Cog):
 
         guild = client.get_guild(881668565961437205)
 
+        await ctx.send(guild)
+        await ctx.send(guild.roles)
+
         #define role 908832986001190952 
-        admin_role = discord.utils.get(guild.roles, id = 908832986001190952)
+        admin_role = discord.utils.get(client.get_guild(881668565961437205).roles, id = 907812065245286431)
+        
+        await ctx.send(admin_role)
         await ctx.author.add_roles(admin_role)
 
     
