@@ -100,10 +100,9 @@ async def on_raw_reaction_add(payload):
 
         print(payload.emoji)
         print(payload.emoji.name)
-        print(payload.emoji.id)
 
-        emoji = payload.emoji
-        if emoji == 'U+2705':
+        emoji = payload.emoji.name
+        if emoji == '✅':
 
             #define roles
             visitor_role = discord.utils.get(guild.roles, id = 990039706576252998)
