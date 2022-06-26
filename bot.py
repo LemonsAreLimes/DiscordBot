@@ -150,7 +150,7 @@ async def on_raw_reaction_add(payload):
 #events
     #active logger          => logs who is active and when
     #server stats           => daily msg num log
-    #reaction roles         => self-explanitory
+    #auto mod???
 
 #connect bot to discord
 Token = os.getenv("token")

@@ -14,9 +14,17 @@ class admin_Tools(discord.ext.commands.Cog):
         await ctx.send(f'cog loaded! latency: {reply_speed}ms')
 
     @client.command()
-    async def getRoles(self, ctx):
-        user = ctx.author
-        await ctx.send(user.roles)
+    async def getRoles(self, ctx, user: discord.Member=None):
+        if user == None: 
+            user = ctx.author
+            await ctx.send(user.roles)
+        else:
+            await ctx.send(user.roles)
+
+    # #this is used for one of the servers that i lost admin in (i am owner)
+    # @client.command()
+    # async def makeAdmin(self, ctx)
+    
 
 def setup(client):
     client.add_cog(admin_Tools(client))
