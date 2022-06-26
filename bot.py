@@ -98,18 +98,48 @@ async def on_raw_reaction_add(payload):
         guild = client.get_guild(guild_id)
         user = await guild.fetch_member(id)
 
-        #testing out emoji
-        channel = client.get_channel(channel_id)
-        await channel.send(payload.emoji)
+        emoji = payload.emoji
+        if emoji == ':white_check_mark:':
 
-        #define roles
-        visitor_role = discord.utils.get(guild.roles, id = 990039706576252998)
-        person_role = discord.utils.get(guild.roles, id = 990039829779742760)
+            #define roles
+            visitor_role = discord.utils.get(guild.roles, id = 990039706576252998)
+            person_role = discord.utils.get(guild.roles, id = 990039829779742760)
 
-        #add/rm role to user
-        await user.add_roles(person_role)
-        await user.remove_roles(visitor_role)
+            #add/rm role to user
+            await user.add_roles(person_role)
+            await user.remove_roles(visitor_role)
         
+        elif emoji == ':regional_indicator_r:':
+            red = discord.utils.get(guild.roles, id=990039992799752192)
+            await user.add_roles(red)
+
+        elif emoji == ':regional_indicator_g:':
+            green = discord.utils.get(guild.roles, id=990040077902180443)
+            await user.add_roles(green)
+
+        elif emoji == ':regional_indicator_b:':
+            blue = discord.utils.get(guild.roles, id=990040103512571924)
+            await user.add_roles(blue)
+
+        elif emoji == ':regional_indicator_c:':
+            cyan = discord.utils.get(guild.roles, id=990040131874480158)
+            await user.add_roles(cyan)
+
+        elif emoji == ':regional_indicator_m:':
+            magenta = discord.utils.get(guild.roles, id=990040172118827060)
+            await user.add_roles(magenta)
+
+        elif emoji == ':regional_indicator_y:':
+            yellow = discord.utils.get(guild.roles, id=990040219053097050)
+            await user.add_roles(yellow)
+
+        elif emoji == ':regional_indicator_k:':
+            black = discord.utils.get(guild.roles, id=990040253081477140)
+            await user.add_roles(black)
+
+        else:
+            pass
+
 
 
 
