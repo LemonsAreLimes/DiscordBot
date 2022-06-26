@@ -95,8 +95,8 @@ async def on_raw_reaction_add(payload): #FIX THIS SHIT ISTG
     if payload.channel_id == channel_id:
         id = payload.user_id
         guild_id = 989980425529212999
-        user = await discord.Guild.fetch_member(self=guild_id, member_id=id)
         guild = client.get_guild(guild_id)
+        user = await guild.fetch_member(id)
 
         visitor_role = discord.utils.get(guild.roles, id = 990039706576252998)
         person_role = discord.utils.get(guild.roles, id = 990039829779742760)
