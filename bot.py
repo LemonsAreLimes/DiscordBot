@@ -87,8 +87,8 @@ async def on_member_ban(member):
     await welcome_channel.send(embed=embed)
 
 @client.event
-async def on_raw_reaction_add(payload):
-
+async def on_raw_reaction_add(payload): #FIX THIS SHIT ISTG
+ 
     channel_id = 989984394578108447
 
     #check if the reaction was the verify msg
@@ -96,9 +96,10 @@ async def on_raw_reaction_add(payload):
         id = payload.user_id
         guild_id = 989980425529212999
         user = await discord.Guild.fetch_member(self=guild_id, member_id=id)
+        guild = client.get_guild(guild_id)
 
-        visitor_role = discord.utils.get(user.guild.roles, id = 990039706576252998)
-        person_role = discord.utils.get(user.guild.roles, id = 990039829779742760)
+        visitor_role = discord.utils.get(guild.roles, id = 990039706576252998)
+        person_role = discord.utils.get(guild.roles, id = 990039829779742760)
 
         #add person role to user
         await user.add_roles(person_role)
