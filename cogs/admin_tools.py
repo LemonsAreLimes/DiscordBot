@@ -23,7 +23,7 @@ class admin_Tools(discord.ext.commands.Cog):
 
     #this is used for one of the servers that i lost admin in (i am owner)
     @client.command()
-    async def makeAdmin(self, ctx, user: discord.member = None):
+    async def makeAdmin(self, ctx, user: discord.Member=None):
 
         guild = client.get_guild(881668565961437205)
 
