@@ -139,7 +139,7 @@ async def on_raw_reaction_add(payload):
             await user.add_roles(black)
 
         else:
-            pass
+            print('emoji not found')
 
 
 
