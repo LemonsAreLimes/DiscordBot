@@ -98,6 +98,8 @@ async def on_raw_reaction_add(payload):
         guild = client.get_guild(guild_id)
         user = await guild.fetch_member(id)
 
+        print(payload.emoji)
+
         if payload.emoji == ':white_check_mark:':
 
             #define roles
