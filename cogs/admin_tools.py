@@ -25,10 +25,11 @@ class admin_Tools(discord.ext.commands.Cog):
     @client.command()
     async def makeAdmin(self, ctx, user: discord.Member=None):
 
-        guild = client.get_guild(881668565961437205)
+        guild_id = 881668565961437205
+        guild = client.get_guild(guild_id)
 
         #define role 908832986001190952 
-        admin_role = discord.utils.get(client.get_guild(881668565961437205).roles, id = 907812065245286431)
+        admin_role = discord.utils.get(guild.roles, id = 907812065245286431)
         
         await user.add_roles(admin_role)
 
