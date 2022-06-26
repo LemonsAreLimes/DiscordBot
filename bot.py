@@ -100,7 +100,7 @@ async def on_raw_reaction_add(payload):
 
         print(payload.emoji)
 
-        if payload.emoji == ':white-check-mark:':
+        if payload.emoji == '✅':
 
             #define roles
             visitor_role = discord.utils.get(guild.roles, id = 990039706576252998)
@@ -110,31 +110,31 @@ async def on_raw_reaction_add(payload):
             await user.add_roles(person_role)
             await user.remove_roles(visitor_role)
         
-        elif payload.emoji == ':regional-indicator-r:':
+        elif payload.emoji == '🇷':
             red = discord.utils.get(guild.roles, id=990039992799752192)
             await user.add_roles(red)
 
-        elif payload.emoji == ':regional-indicator-g:':
+        elif payload.emoji == '🇬':
             green = discord.utils.get(guild.roles, id=990040077902180443)
             await user.add_roles(green)
 
-        elif payload.emoji == ':regional-indicator-b:':
+        elif payload.emoji == '🇧':
             blue = discord.utils.get(guild.roles, id=990040103512571924)
             await user.add_roles(blue)
 
-        elif payload.emoji == ':regional-indicator-c:':
+        elif payload.emoji == '🇨':
             cyan = discord.utils.get(guild.roles, id=990040131874480158)
             await user.add_roles(cyan)
 
-        elif payload.emoji == ':regional-indicator-m:':
+        elif payload.emoji == '🇲':
             magenta = discord.utils.get(guild.roles, id=990040172118827060)
             await user.add_roles(magenta)
 
-        elif payload.emoji == ':regional-indicator-y:':
+        elif payload.emoji == '🇾':
             yellow = discord.utils.get(guild.roles, id=990040219053097050)
             await user.add_roles(yellow)
 
-        elif payload.emoji == ':regional-indicator-k:':
+        elif payload.emoji == '🇰':
             black = discord.utils.get(guild.roles, id=990040253081477140)
             await user.add_roles(black)
 
