@@ -35,7 +35,7 @@ class reddit(discord.ext.commands.Cog):
         author =    posts[num]['data']['author']
 
         #create embed
-        embed = discord.Embed(title=title, description=f'by: {author} on r/{subreddit}')
+        embed = discord.Embed(title=title, description=f'by: {author} on r/{subreddit}', color=0xFF0000)
         embed.set_image(url=image)
 
         await ctx.send(embed)
