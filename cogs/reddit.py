@@ -40,7 +40,7 @@ class reddit(discord.ext.commands.Cog):
         embed = discord.Embed(title=post_title, description=f'by: {author} on r/{subreddit}', color=0xFF0000)
         embed.set_image(url=image)
 
-        await ctx.send(embed)
+        await ctx.send(embed=embed)
 
 def setup(client):
     client.add_cog(reddit(client))
