@@ -1,4 +1,3 @@
-from email import header
 import discord 
 import discord.ext.commands
 
