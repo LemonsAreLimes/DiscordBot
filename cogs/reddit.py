@@ -22,7 +22,7 @@ class reddit(discord.ext.commands.Cog):
         headers = json.loads(os.getenv('reddit_auth_header'))
 
         #get hot posts
-        hot_posts = await requests.get('https://oauth.reddit.com/r/memes/hot', headers=headers)
+        hot_posts = requests.get('https://oauth.reddit.com/r/memes/hot', headers=headers)
         posts = hot_posts.json()['data']['children']
 
         #pick a random post
