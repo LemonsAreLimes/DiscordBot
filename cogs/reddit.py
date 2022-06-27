@@ -17,8 +17,11 @@ class reddit(discord.ext.commands.Cog):
         
 
     @client.command()
-    async def meme(ctx):
+    async def meme(self, ctx):
         await ctx.send('meme')
+
+        key = os.getenv('reddit_auth_header')
+        await ctx.send(f'meme: {key}')
 
 
 def setup(client):
