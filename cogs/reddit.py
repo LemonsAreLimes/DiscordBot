@@ -30,12 +30,14 @@ class reddit(discord.ext.commands.Cog):
         
         #define stuff ig
         subreddit = posts[num]['data']['subreddit']
-        title =     posts[num]['data']['title']
+        post_title =     posts[num]['data']['title']
         image =     posts[num]['data']['url']
         author =    posts[num]['data']['author']
 
+        print(image)
+
         #create embed
-        embed = discord.Embed(title=title, description=f'by: {author} on r/{subreddit}', color=0xFF0000)
+        embed = discord.Embed(title=post_title, description=f'by: {author} on r/{subreddit}', color=0xFF0000)
         embed.set_image(url=image)
 
         await ctx.send(embed)
