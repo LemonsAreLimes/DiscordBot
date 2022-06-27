@@ -18,11 +18,27 @@ class reddit(discord.ext.commands.Cog):
 
     @client.command()
     async def meme(self, ctx):
-        await ctx.send('meme')
 
-        key = os.getenv('reddit_auth_header')
-        await ctx.send(f'meme: {key}')
+        headers = json.loads(os.getenv('reddit_auth_header'))
 
+        #get hot posts
+        hot_posts = await requests.get('https://oauth.reddit.com/r/memes/hot', headers=headers)
+        posts = hot_posts.json()['data']['children']
+
+        #pick a random post
+        num = random.randint(0, len(posts))
+        
+        #define stuff ig
+        subreddit = posts[num]['data']['subreddit']
+        title =     posts[num]['data']['title']
+        image =     posts[num]['data']['url']
+        author =    posts[num]['data']['author']
+
+        #create embed
+        embed = discord.Embed(title=title, description=f'by: {author} on r/{subreddit}')
+        embed.set_image(url=image)
+
+        await ctx.send(embed)
 
 def setup(client):
     client.add_cog(reddit(client))
@@ -58,17 +74,7 @@ def connectToReddit():
 
 # print(headers)
 
-# #get hot posts
-# hot_posts = requests.get('https://oauth.reddit.com/r/memes/hot', headers=headers)
-# posts = hot_posts.json()['data']['children']
 
-# #pick a random post
-# num = random.randint(0, len(posts))
-
-# subreddit = posts[num]['data']['subreddit']
-# title = posts[num]['data']['title']
-# image = posts[num]['data']['url']
-# author = posts[num]['data']['author']
 
 # print(subreddit)
 # print(title)
