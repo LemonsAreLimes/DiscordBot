@@ -1,9 +1,11 @@
+from email import header
 import discord 
 import discord.ext.commands
 
 import os
 import requests
 import requests.auth
+import json
 import random
 
 client = discord.ext.commands.Bot(command_prefix="rc.")
@@ -49,7 +51,7 @@ def connectToReddit():
     headers['Authorization'] = f'bearer {token}'
 
     #set it as an eviroment var so it can be used later 
-    os.environ['reddit_auth_header'] = headers
+    os.environ['reddit_auth_header'] = json.dumps(headers)
     print('connected to reddit!')
 
 # print(headers)
