@@ -4,7 +4,6 @@ import discord.ext.commands
 import os
 import requests
 import requests.auth
-import json
 import random
 
 client = discord.ext.commands.Bot(command_prefix="rc.")
