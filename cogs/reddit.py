@@ -17,7 +17,7 @@ class reddit(discord.ext.commands.Cog):
         
 
     @client.command()
-    async def meme(self, ctx):
+    async def meme(self, ctx, post_num=1):
 
         headers = json.loads(os.getenv('reddit_auth_header'))
 
@@ -25,22 +25,54 @@ class reddit(discord.ext.commands.Cog):
         hot_posts = requests.get('https://oauth.reddit.com/r/memes/hot', headers=headers)
         posts = hot_posts.json()['data']['children']
 
-        #pick a random post
-        num = random.randint(0, len(posts))
-        
-        #define stuff ig
-        subreddit = posts[num]['data']['subreddit']
-        post_title =     posts[num]['data']['title']
-        image =     posts[num]['data']['url']
-        author =    posts[num]['data']['author']
+        while True:
+            #used to replace for loop
+            if post_num <= 0:
+                break
 
-        print(image)
+            #pick a random post
+            num = random.randint(0, len(posts))
+            not_in_filetype = 0
+            
+            try: #got list index out of range error
+                subreddit = posts[num]['data']['subreddit']
+                post_title= posts[num]['data']['title']
+                image =     posts[num]['data']['url']
+                author =    posts[num]['data']['author']
 
-        #create embed
-        embed = discord.Embed(title=post_title, description=f'by: {author} on r/{subreddit}', color=0xFF0000)
-        embed.set_image(url=image)
+                #check image for filetypes (prevents sending videos, they do not work)
+                filetypes = ['gif', 'png', 'jpg', 'jpeg']
+                for file_type in filetypes:
+                    if file_type in image:
+                        #create embed and post
+                        embed = discord.Embed(title=post_title, description=f'by: {author} on r/{subreddit}', color=0xFF0000)
+                        embed.set_image(url=image)
+                        await ctx.send(embed=embed)
 
-        await ctx.send(embed=embed)
+                        post_num -= 1
+                        found = True
+                        break
+                    else:
+                        found = False
+                        not_in_filetype += 1
+
+                #prevents looping over and over
+                if found == False:
+                    if not_in_filetype >= 20:
+                        break
+                    else:
+                        not_in_filetype += 1
+            except:
+                pass
+
+
+
+
+
+
+
+
+
 
 def setup(client):
     client.add_cog(reddit(client))
