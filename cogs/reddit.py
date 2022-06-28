@@ -33,7 +33,7 @@ class reddit(discord.ext.commands.Cog):
         if arg2 == None:                    #no arg? post 1
             post_num = 1
         elif arg2.isnumeric() == True:      #int? thats the numeber of things to post 
-            post_num == arg2
+            post_num = int(arg2)
         else:                               #string? call em a dumb dumb
             await ctx.send('no no no, wrong syntax there bud')
             return
