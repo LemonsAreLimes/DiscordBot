@@ -17,9 +17,7 @@ class reddit(discord.ext.commands.Cog):
         
 
     @client.command()
-    async def reddit(self, ctx, arg1='memes', arg2=1):
-        print(arg1)
-        print(arg2)
+    async def reddit(self, ctx, arg1=None, arg2=None):
 
         #humans will be humans
         if type(arg2) == str:                           #if arg2 is a string, return
@@ -36,14 +34,15 @@ class reddit(discord.ext.commands.Cog):
             post_num = arg1
             sub = 'memes'
 
+        if arg1 == None and arg2 == None:
+            post_num = 1
+            sub = 'memes'
+
         if post_num > 5:                                #just a limit i wanted to add
             post_num = 5
 
         if 'r/' in sub:                                 #humman error is quite common
             sub = sub.replace('r/', '')
-
-        print(sub)
-        print(post_num)
 
     
         #get hot posts
