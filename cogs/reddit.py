@@ -22,20 +22,26 @@ class reddit(discord.ext.commands.Cog):
     async def reddit(self, ctx, arg1='memes', arg2=1):
 
         #humans will be humans
-        if type(arg1) == int:
-            post_num = arg1
-            sub = 'memes'
-        elif type(arg2) == string:
-            await ctx.send('syntax: rc.reddit sub number_of_posts')
-            await ctx.send('if not sub defined im gonna just assume memes..')
-            await ctx.send('i will only post images..')
-        else:
+
+        if type(arg1) == string and type(arg2) == int:  #if evreything is ok, use args
             post_num = arg2
             sub = arg1
 
             if 'r/' in sub:
                 sub = sub.replace('r/', '')
 
+        if type(arg2) == string:                        #if arg2 is a string, return
+            await ctx.send('syntax: rc.reddit sub number_of_posts')
+            await ctx.send('if not sub defined im gonna just assume memes..')
+            await ctx.send('i will only post images..')
+            return
+
+        if type(arg1) == int:                           #if arg1 is a number, use memes sub
+            post_num = arg1
+            sub = 'memes'
+
+        if post_num > 5:                                #just a limit i wanted to add
+            post_num = 5
 
         headers = json.loads(os.getenv('reddit_auth_header'))
 
