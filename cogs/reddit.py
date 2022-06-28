@@ -1,5 +1,3 @@
-from ast import arg
-import string
 import discord 
 import discord.ext.commands
 
@@ -23,14 +21,14 @@ class reddit(discord.ext.commands.Cog):
 
         #humans will be humans
 
-        if type(arg1) == string and type(arg2) == int:  #if evreything is ok, use args
+        if type(arg1) == str and type(arg2) == int:     #if evreything is ok, use args
             post_num = arg2
             sub = arg1
 
             if 'r/' in sub:
                 sub = sub.replace('r/', '')
 
-        if type(arg2) == string:                        #if arg2 is a string, return
+        if type(arg2) == str:                           #if arg2 is a string, return
             await ctx.send('syntax: rc.reddit sub number_of_posts')
             await ctx.send('if not sub defined im gonna just assume memes..')
             await ctx.send('i will only post images..')
@@ -123,12 +121,4 @@ def connectToReddit():
     os.environ['reddit_auth_header'] = json.dumps(headers)
     print('connected to reddit!')
 
-# print(headers)
-
-
-
-# print(subreddit)
-# print(title)
-# print(image)
-# print(author)
 
