@@ -20,28 +20,25 @@ class reddit(discord.ext.commands.Cog):
     async def reddit(self, ctx, arg1=None, arg2=None):
 
         #humans will be humans
-        if type(arg2) == str:                           #if arg2 is a string, return
-            await ctx.send('syntax: rc.reddit sub number_of_posts')
-            await ctx.send('if not sub defined im gonna just assume memes..')
-            await ctx.send('i will only post images..')
-            return
 
-        if type(arg1) == str and type(arg2) == int:     #if evreything is ok, use args
-            post_num = arg2
+        if arg1 == None:        #no args? use default
+            sub = 'memes'
+        if type(arg1) == str:   #string? use it for the sub
             sub = arg1
-
-        if type(arg1) == int:                           #if arg1 is a number, use memes sub
+        if type(arg1) == int:   #int? thats the number of posts to show
             post_num = arg1
-            sub = 'memes'
 
-        if arg1 == None and arg2 == None:
+        if arg2 == None:        #no arg? post 1
             post_num = 1
-            sub = 'memes'
+        if type(arg2) == int:   #int? thats the numeber of things to post 
+            post_num == arg2
+        if type(arg2) == str:   #string? call em a dumb dumb
+            await ctx.send('no no no, wrong syntax there bud')
 
-        if post_num > 5:                                #just a limit i wanted to add
+        if post_num > 5:        #just a limit i wanted to add
             post_num = 5
 
-        if 'r/' in sub:                                 #humman error is quite common
+        if 'r/' in sub:         #humman error is quite common
             sub = sub.replace('r/', '')
 
     
