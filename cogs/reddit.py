@@ -17,24 +17,24 @@ class reddit(discord.ext.commands.Cog):
         
 
     @client.command()
-    async def meme(self, ctx, arg1=None, arg2=None):
+    async def meme(self, ctx, subreddit_or_post_number=None, post_number_if_subreddit_provided=None):
 
         #humans will be humans
 
-        if arg1 == None:                    #no args? use default
+        if subreddit_or_post_number == None:                    #no args? use default
             post_num = 1
             sub = 'memes'
-        elif arg1.isnumeric() == True:      #int? thats the number of posts to show
-            post_num = arg1
+        elif subreddit_or_post_number.isnumeric() == True:      #int? thats the number of posts to show
+            post_num = subreddit_or_post_number
             sub = 'memes'
-        else:                               #string? use it for the sub
-            sub = arg1
+        else:                                                   #string? use it for the sub
+            sub = subreddit_or_post_number
 
-        if arg2 == None:                    #no arg? post 1
+        if post_number_if_subreddit_provided == None:                    #no arg? post 1
             post_num = 1
-        elif arg2.isnumeric() == True:      #int? thats the numeber of things to post 
-            post_num = int(arg2)
-        else:                               #string? call em a dumb dumb
+        elif post_number_if_subreddit_provided.isnumeric() == True:      #int? thats the numeber of things to post 
+            post_num = int(post_number_if_subreddit_provided)
+        else:                                                            #string? call em a dumb dumb
             await ctx.send('no no no, wrong syntax there bud')
             return
 
