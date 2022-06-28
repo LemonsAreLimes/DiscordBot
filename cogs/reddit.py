@@ -22,10 +22,11 @@ class reddit(discord.ext.commands.Cog):
         #humans will be humans
 
         if arg1 == None:                    #no args? use default
-            sub = 'memes'
             post_num = 1
+            sub = 'memes'
         elif arg1.isnumeric() == True:      #int? thats the number of posts to show
             post_num = arg1
+            sub = 'memes'
         else:                               #string? use it for the sub
             sub = arg1
 
@@ -35,6 +36,7 @@ class reddit(discord.ext.commands.Cog):
             post_num == arg2
         else:                               #string? call em a dumb dumb
             await ctx.send('no no no, wrong syntax there bud')
+            return
 
         if post_num > 5:                    #just a limit i wanted to add
             post_num = 5
