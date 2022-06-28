@@ -17,12 +17,12 @@ class reddit(discord.ext.commands.Cog):
         
 
     @client.command()
-    async def meme(self, ctx, post_num=1):
+    async def reddit(self, ctx, sub='memes', post_num=1):
 
         headers = json.loads(os.getenv('reddit_auth_header'))
 
         #get hot posts
-        hot_posts = requests.get('https://oauth.reddit.com/r/memes/hot', headers=headers)
+        hot_posts = requests.get(f'https://oauth.reddit.com/r/{sub}/hot', headers=headers)
         posts = hot_posts.json()['data']['children']
 
         while True:
@@ -65,14 +65,7 @@ class reddit(discord.ext.commands.Cog):
             except:
                 pass
 
-
-
-
-
-
-
-
-
+   
 
 def setup(client):
     client.add_cog(reddit(client))
