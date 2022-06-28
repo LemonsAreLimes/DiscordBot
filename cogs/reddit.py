@@ -1,3 +1,5 @@
+from ast import arg
+import string
 import discord 
 import discord.ext.commands
 
@@ -17,7 +19,23 @@ class reddit(discord.ext.commands.Cog):
         
 
     @client.command()
-    async def reddit(self, ctx, sub='memes', post_num=1):
+    async def reddit(self, ctx, arg1='memes', arg2=1):
+
+        #humans will be humans
+        if type(arg1) == int:
+            post_num = arg1
+            sub = 'memes'
+        elif type(arg2) == string:
+            await ctx.send('syntax: rc.reddit sub number_of_posts')
+            await ctx.send('if not sub defined im gonna just assume memes..')
+            await ctx.send('i will only post images..')
+        else:
+            post_num = arg2
+            sub = arg1
+
+            if 'r/' in sub:
+                sub = sub.replace('r/', '')
+
 
         headers = json.loads(os.getenv('reddit_auth_header'))
 
