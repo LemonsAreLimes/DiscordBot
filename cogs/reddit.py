@@ -21,24 +21,24 @@ class reddit(discord.ext.commands.Cog):
 
         #humans will be humans
 
-        if arg1 == None:        #no args? use default
+        if arg1 == None:                #no args? use default
             sub = 'memes'
-        if type(arg1) == str:   #string? use it for the sub
+        if type(arg1) == str:           #string? use it for the sub
             sub = arg1
-        if type(arg1) == int:   #int? thats the number of posts to show
+        if arg1.isnumeric() == True:    #int? thats the number of posts to show
             post_num = arg1
 
-        if arg2 == None:        #no arg? post 1
+        if arg2 == None:                #no arg? post 1
             post_num = 1
-        if type(arg2) == int:   #int? thats the numeber of things to post 
+        if arg2.isnumeric() == True:    #int? thats the numeber of things to post 
             post_num == arg2
-        if type(arg2) == str:   #string? call em a dumb dumb
+        if type(arg2) == str:           #string? call em a dumb dumb
             await ctx.send('no no no, wrong syntax there bud')
 
-        if post_num > 5:        #just a limit i wanted to add
+        if post_num > 5:                #just a limit i wanted to add
             post_num = 5
 
-        if 'r/' in sub:         #humman error is quite common
+        if 'r/' in sub:                 #humman error is quite common
             sub = sub.replace('r/', '')
 
     
@@ -47,8 +47,7 @@ class reddit(discord.ext.commands.Cog):
         hot_posts = requests.get(f'https://oauth.reddit.com/r/{sub}/hot', headers=headers)
         posts = hot_posts.json()['data']['children']
 
-        while True:
-            #used to replace for loop
+        while True: #used to replace for loop
             if post_num <= 0:
                 break
 
