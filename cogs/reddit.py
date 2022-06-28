@@ -40,6 +40,7 @@ class reddit(discord.ext.commands.Cog):
 
         if post_num > 5:                    #just a limit i wanted to add
             post_num = 5
+            await ctx.send('post limit is 5 ok')
 
         if 'r/' in sub:                     #humman error is quite common
             sub = sub.replace('r/', '')
