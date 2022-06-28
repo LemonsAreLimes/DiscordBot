@@ -23,6 +23,7 @@ class reddit(discord.ext.commands.Cog):
 
         if arg1 == None:                    #no args? use default
             sub = 'memes'
+            post_num = 1
         elif arg1.isnumeric() == True:      #int? thats the number of posts to show
             post_num = arg1
         else:                               #string? use it for the sub
