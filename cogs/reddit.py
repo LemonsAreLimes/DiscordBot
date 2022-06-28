@@ -18,21 +18,19 @@ class reddit(discord.ext.commands.Cog):
 
     @client.command()
     async def reddit(self, ctx, arg1='memes', arg2=1):
+        print(arg1)
+        print(arg2)
 
         #humans will be humans
-
-        if type(arg1) == str and type(arg2) == int:     #if evreything is ok, use args
-            post_num = arg2
-            sub = arg1
-
-            if 'r/' in sub:
-                sub = sub.replace('r/', '')
-
         if type(arg2) == str:                           #if arg2 is a string, return
             await ctx.send('syntax: rc.reddit sub number_of_posts')
             await ctx.send('if not sub defined im gonna just assume memes..')
             await ctx.send('i will only post images..')
             return
+
+        if type(arg1) == str and type(arg2) == int:     #if evreything is ok, use args
+            post_num = arg2
+            sub = arg1
 
         if type(arg1) == int:                           #if arg1 is a number, use memes sub
             post_num = arg1
@@ -41,9 +39,15 @@ class reddit(discord.ext.commands.Cog):
         if post_num > 5:                                #just a limit i wanted to add
             post_num = 5
 
-        headers = json.loads(os.getenv('reddit_auth_header'))
+        if 'r/' in sub:                                 #humman error is quite common
+            sub = sub.replace('r/', '')
 
+        print(sub)
+        print(post_num)
+
+    
         #get hot posts
+        headers = json.loads(os.getenv('reddit_auth_header'))
         hot_posts = requests.get(f'https://oauth.reddit.com/r/{sub}/hot', headers=headers)
         posts = hot_posts.json()['data']['children']
 
