@@ -17,7 +17,7 @@ class reddit(discord.ext.commands.Cog):
         
 
     @client.command()
-    async def reddit(self, ctx, arg1=None, arg2=None):
+    async def meme(self, ctx, arg1=None, arg2=None):
 
         #humans will be humans
 
