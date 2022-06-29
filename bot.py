@@ -35,7 +35,7 @@ async def on_ready():
 async def on_member_join(member):
 
     #create new log in mongo and get joins numbers
-    joins = moong.mongo.CreateUser(member.id, member.name)
+    joins = moong.mongo.UserJoin(member.id, member.name)
     username = member.display_name
 
     if joins > 10:

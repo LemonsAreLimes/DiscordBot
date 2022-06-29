@@ -4,7 +4,7 @@ from pymongo.mongo_client import MongoClient
 import os 
 
 class mongo():
-    def CreateUser(user_id=None, name=None):
+    def UserJoin(user_id=None, name=None):
         if user_id != None and name != None:
 
             db = ConnectToMongo()
