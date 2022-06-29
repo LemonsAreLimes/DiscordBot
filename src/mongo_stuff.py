@@ -18,6 +18,8 @@ class mongo():
                 user['in_server'] = True
                 db.find_one_and_replace({"id":user_id}, user)
 
+                return user['joins']
+
             else:
                 
                 #create user log            
@@ -32,8 +34,11 @@ class mongo():
                     "command_useage": None
                 }
                 db.insert_one(data)
+
+                return 0
         else:
             print('user_id or name not defined')
+
 
     def UserLeave(user_id=None):
         if user_id != None:
@@ -45,6 +50,7 @@ class mongo():
             if user != None:        #i think i might be doing this wrong but watever...
                 user['in_server'] = False
                 db.find_one_and_replace({"id":user_id}, user)
+                return user['joins']
 
 
 def ConnectToMongo():

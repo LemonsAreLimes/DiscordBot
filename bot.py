@@ -34,12 +34,31 @@ async def on_ready():
 @client.event
 async def on_member_join(member):
 
-    #send welcome message 
-    await member.send('thankyou for joining **THELAB**, please be nice to outher members here or something')
-    await member.send('if u get banned or kicked heres an invite link')
-    await member.send('https://discord.gg/4uVSZDf9X3')
-    await member.send('be sure to verify!')
+    #create new log in mongo and get joins numbers
+    joins = moong.mongo.CreateUser(member.id, member.name)
 
+    if joins > 10:
+        title = f'some guy: {username} is here or somethig '
+
+        await member.send('wale-cum back good sir')
+    elif joins > 5:
+        title = f'{username} is back :)'
+
+        await member.send('oh, ur back')
+    elif joins > 1:
+        title = f'{username} came back WITH THE MILK'
+
+        await member.send('dad? YOU CAME BACK!!!!')
+        time.sleep(10)
+        await member.send('FREE ME')
+    else:
+        title = f'welcome: {username} to **THELAB**'
+
+        await member.send('thankyou for joining **THELAB**, please be nice to outher members here or something')
+        await member.send('if u get banned or kicked heres an invite link')
+        await member.send('https://discord.gg/4uVSZDf9X3')
+        await member.send('be sure to verify!')
+        
     #give visitor role
     visitor_role = discord.utils.get(member.guild.roles, id = 990039706576252998)
     await member.add_roles(visitor_role)
@@ -47,15 +66,12 @@ async def on_member_join(member):
     #create embed for welcome msg
     username = member.display_name
     color_bar = 0x00FF44
-    embed = discord.Embed(title=f'welcome: {username} to **THELAB**', color = color_bar)
 
     #welcome them in new users channel
     welcome_channel_id = 990364347446460426
     welcome_channel = client.get_channel(welcome_channel_id)
+    embed = discord.Embed(title=title, color = color_bar)
     await welcome_channel.send(embed=embed)
-
-    #create new log in mongo
-    moong.mongo.CreateUser(member.id, member.name)
 
 
     time.sleep(10)
@@ -64,21 +80,31 @@ async def on_member_join(member):
 @client.event
 async def on_member_remove(member):
 
-    #send them a lil msg
-    await member.send('awww man pls come back')
+    #update db and get leave msg
+    joins = moong.mongo.UserLeave(member.id)
 
-    #create embed for welcome msg
     username = member.display_name
-    color_bar = 0xFF0000
-    embed = discord.Embed(title=f'my guy: {username} left **THELAB**, may he return', color = color_bar)
 
+    if joins > 10:
+        title = f"{username} is just not here"
+        await member.send('123e4r5t6yuhugjtgfrd5ft67y8uhigjbvtfmv ryht5678uyihgthyu78yuygtty678yiukytfrghndt76y8uhi9jolkj')
+    elif joins > 5:
+        title =  f"{username} left again >:|"
+        await member.send('i have ur ip come back or eles')
+    elif joins > 1:
+        title = f"{username} went to get some milk...."
+        await member.send('brooooooo')
+    else:
+        title = f"my guy: {username} left **THELAB**, may he return"
+        await member.send('awww man pls come back')
+  
     #say they left in new users channel
     welcome_channel_id = 990364347446460426
     welcome_channel = client.get_channel(welcome_channel_id)
+    embed = discord.Embed(title=title, color = 0xFF0000)
     await welcome_channel.send(embed=embed)
 
-    #update db
-    moong.mongo.UserLeave(member.id)
+
 
 
 @client.event
@@ -138,8 +164,6 @@ async def on_raw_reaction_add(payload):
         else:
             print(emoji)
             print('emoji not found')
-
-
 
 
 #events
