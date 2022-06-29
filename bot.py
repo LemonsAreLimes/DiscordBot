@@ -36,6 +36,7 @@ async def on_member_join(member):
 
     #create new log in mongo and get joins numbers
     joins = moong.mongo.CreateUser(member.id, member.name)
+    username = member.display_name
 
     if joins > 10:
         title = f'some guy: {username} is here or somethig '
@@ -63,14 +64,10 @@ async def on_member_join(member):
     visitor_role = discord.utils.get(member.guild.roles, id = 990039706576252998)
     await member.add_roles(visitor_role)
 
-    #create embed for welcome msg
-    username = member.display_name
-    color_bar = 0x00FF44
-
     #welcome them in new users channel
     welcome_channel_id = 990364347446460426
     welcome_channel = client.get_channel(welcome_channel_id)
-    embed = discord.Embed(title=title, color = color_bar)
+    embed = discord.Embed(title=title, color = 0x00FF44)
     await welcome_channel.send(embed=embed)
 
 
