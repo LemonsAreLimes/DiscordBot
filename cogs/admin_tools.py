@@ -1,7 +1,7 @@
 import discord
 import discord.ext.commands
 
-client = discord.ext.commands.Bot(command_prefix="rc.sudo")
+client = discord.ext.commands.Bot(command_prefix="rc.")
 
 class admin_Tools(discord.ext.commands.Cog):
     def __init__(self, client):
