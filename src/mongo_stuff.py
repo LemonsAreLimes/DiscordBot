@@ -15,7 +15,7 @@ class mongo():
 
                 #increce joins by one
                 user['joins'] += 1
-                db.find_one_and_update({"id":user_id}, user)
+                db.find_one_and_replace({"id":user_id}, user)
 
             else:
                 
