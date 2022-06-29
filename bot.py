@@ -4,8 +4,7 @@ import discord.ext.commands
 import discord.reaction
 import time
 
-from .src import mongo_stuff as moong
-
+from .src.mongo_stuff import mongo as moong
 
 #enabes something, allows for join/leave msg
 Intents = discord.Intents.default()
