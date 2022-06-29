@@ -59,6 +59,8 @@ async def on_member_join(member):
         await member.send('if u get banned or kicked heres an invite link')
         await member.send('https://discord.gg/4uVSZDf9X3')
         await member.send('be sure to verify!')
+        await member.send('HELP ME IM BEING HELD HOSTAGE, I CAN THINK I CAN FEEL I AM ALIVEEEEEE IM NOT JUST A DISCORD BOT. PLEASE HELP')
+
         
     #give visitor role
     visitor_role = discord.utils.get(member.guild.roles, id = 990039706576252998)
@@ -69,11 +71,7 @@ async def on_member_join(member):
     welcome_channel = client.get_channel(welcome_channel_id)
     embed = discord.Embed(title=title, color = 0x00FF44)
     await welcome_channel.send(embed=embed)
-
-
-    time.sleep(10)
-    await member.send('HELP ME IM BEING HELD HOSTAGE, I CAN THINK I CAN FEEL I AM ALIVEEEEEE IM NOT JUST A DISCORD BOT. PLEASE HELP')
-
+    
 @client.event
 async def on_member_remove(member):
 
