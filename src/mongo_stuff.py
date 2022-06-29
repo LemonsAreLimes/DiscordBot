@@ -13,8 +13,9 @@ class mongo():
             user = db.find_one({"id":user_id})
             if user != None:
 
-                #increce joins by one
+                #increce joins by one and set in_server to true
                 user['joins'] += 1
+                user['in_server'] = True
                 db.find_one_and_replace({"id":user_id}, user)
 
             else:
@@ -34,7 +35,16 @@ class mongo():
         else:
             print('user_id or name not defined')
 
+    def UserLeave(user_id=None):
+        if user_id != None:
 
+            db = ConnectToMongo()
+
+            #set in_server to false
+            user = db.find_one({"id":user_id})
+            if user != None:        #i think i might be doing this wrong but watever...
+                user['in_server'] = False
+                db.find_one_and_replace({"id":user_id})
 
 
 def ConnectToMongo():

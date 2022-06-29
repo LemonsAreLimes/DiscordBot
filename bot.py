@@ -55,9 +55,7 @@ async def on_member_join(member):
     await welcome_channel.send(embed=embed)
 
     #create new log in mongo
-    user_id = member.id
-    name = member.name
-    moong.mongo.CreateUser(user_id, name)
+    moong.mongo.CreateUser(member.id, member.name)
 
 
     time.sleep(10)
@@ -79,21 +77,9 @@ async def on_member_remove(member):
     welcome_channel = client.get_channel(welcome_channel_id)
     await welcome_channel.send(embed=embed)
 
-@client.event
-async def on_member_ban(member):
+    #update db
+    moong.mongo.UserLeave(member.id)
 
-    #send them a lil msg
-    await member.send('bruh u got caught lackin :skull:')
-
-    #create embed for welcome msg
-    username = member.display_name
-    color_bar = 0xFF0000
-    embed = discord.Embed(title=f'{username} got caught lackin :skull:', color = color_bar)
-
-    #say they got banned in new users channel
-    welcome_channel_id = 990364347446460426
-    welcome_channel = client.get_channel(welcome_channel_id)
-    await welcome_channel.send(embed=embed)
 
 @client.event
 async def on_raw_reaction_add(payload):
