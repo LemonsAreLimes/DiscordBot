@@ -6,28 +6,33 @@ import os
 class mongo():
     def CreateUser(user_id=None, name=None):
         if user_id != None and name != None:
+
             db = ConnectToMongo()
             
-            data = {
-                "id":user_id,
-                "name": name,
-                "messages": 0,
-                "bal": 0,
-                "in_server": True,
-                "joins": 1,
-                "roles" : None,
-                "command_useage": None
-            }
-
-            db.insert_one(data)
-
-    def EditUserData(user_id=None, data=None):
-        if user_id != None and data != None:
-            db = ConnectToMongo()
+            #check if the user has already been in the server
             user = db.find_one({"id":user_id})
-            print(user)
+            if user != None:
+
+                #increce joins by one
+                user['joins'] += 1
+                db.find_one_and_update({"id":user_id}, user)
+
+            else:
+                
+                #create user log            
+                data = {
+                    "id":user_id,
+                    "name": name,
+                    "messages": 0,
+                    "bal": 0,
+                    "in_server": True,
+                    "joins": 1,
+                    "roles" : None,
+                    "command_useage": None
+                }
+                db.insert_one(data)
         else:
-            print('user ID or data not defined!')
+            print('user_id or name not defined')
 
 
 
