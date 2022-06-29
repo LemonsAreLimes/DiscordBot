@@ -9,14 +9,51 @@ import random
 
 client = discord.ext.commands.Bot(command_prefix="rc.")
 
-class reddit(discord.ext.commands.Cog):
+class apis(discord.ext.commands.Cog):
     def __init__(self, client):
         self.client = client
-        print('initalized: reddit')
+        print('initalized: apis')
         connectToReddit()
         
 
-    @client.command()
+    @client.command()                       #google deepdream
+    async def dream(self, ctx, Link=None):
+
+        if Link == None:
+            await ctx.send("no image link provieded")
+        else:
+            api_key = os.getenv('google_api_key')
+
+            #send image to google deepdream
+            r = requests.post(
+            "https://api.deepai.org/api/deepdream",
+            data={'image':Link,},
+            headers={'api-key': api_key})
+    
+            #get the response
+            dest = r.json()
+            if "output_url" in str(dest):
+
+                #create embed with image dest on it
+                sender = ctx.message.author
+                image = dest['output_url']
+
+                embed = discord.Embed(title=f"{sender}'s deepdream", description="this image will disapear soon", colour=0xA900FF)
+                embed.set_image(url=image)
+                await ctx.send(embed=embed)
+
+            else:
+                await ctx.send("Something went wrong")
+
+                #create embed with image dest on it
+                sender = ctx.message.author
+                image = dest['output_url']
+
+                embed = discord.Embed(title=f"{sender}'s deepdream", description="this image will disapear soon", colour=0xA900FF)
+                embed.set_image(url=image)
+                await ctx.send(embed=embed)
+
+    @client.command()                        #reddit/meme
     async def meme(self, ctx, subreddit_or_post_number=None, post_number_if_subreddit_provided=None):
 
         #humans will be humans
@@ -92,8 +129,15 @@ class reddit(discord.ext.commands.Cog):
 
    
 
+
 def setup(client):
-    client.add_cog(reddit(client))
+    client.add_cog(apis(client))
+
+
+#apis
+    #reddit
+    #deepdream
+    #rule34
 
 
 

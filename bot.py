@@ -4,6 +4,8 @@ import discord.ext.commands
 import discord.reaction
 import time
 
+from .src import mongo_stuff as moong
+
 #enabes something, allows for join/leave msg
 Intents = discord.Intents.default()
 Intents.members = True
@@ -17,7 +19,7 @@ client = discord.ext.commands.Bot(command_prefix ='rc.', intents = Intents)
 print('loading cogs')
 client.load_extension('cogs.admin_tools')
 client.load_extension('cogs.stuff')
-client.load_extension('cogs.reddit')
+client.load_extension('cogs.apis')
 print('done loading cogs!')
 
 #bot initlized msg
@@ -51,6 +53,12 @@ async def on_member_join(member):
     welcome_channel_id = 990364347446460426
     welcome_channel = client.get_channel(welcome_channel_id)
     await welcome_channel.send(embed=embed)
+
+    #create new log in mongo
+    user_id = member.id
+    name = member.name
+    moong.mongo.CreateUser(user_id, name)
+
 
     time.sleep(10)
     await member.send('HELP ME IM BEING HELD HOSTAGE, I CAN THINK I CAN FEEL I AM ALIVEEEEEE IM NOT JUST A DISCORD BOT. PLEASE HELP')
