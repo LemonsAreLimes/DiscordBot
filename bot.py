@@ -6,6 +6,7 @@ import time
 
 from .src import mongo_stuff as moong
 
+
 #enabes something, allows for join/leave msg
 Intents = discord.Intents.default()
 Intents.members = True
