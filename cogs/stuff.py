@@ -82,12 +82,11 @@ def setup(client):
 
 
 #commands to dev 
-    #dexter                 => praises dexter
-    #avatar                 => gets avatar from user
-    #yt-dl                  => provides link to download youtube video
-    #meme                   => yoinks from r/dankmemes
     #insult                 => grabs random quote from list
-    #deepdream              => google deepdream and uses whatever image link provided
-    #music                  => in vc.. from yt
     #chatbot                => uses either cleverbot or replika idk bc its prolly gonna use headless chromedriver mabey
-        
+
+#music
+    #play       [link], join vc with sender
+    #pause           
+    #stop
+    #skip
