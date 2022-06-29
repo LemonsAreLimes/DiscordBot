@@ -44,7 +44,7 @@ class mongo():
             user = db.find_one({"id":user_id})
             if user != None:        #i think i might be doing this wrong but watever...
                 user['in_server'] = False
-                db.find_one_and_replace({"id":user_id})
+                db.find_one_and_replace({"id":user_id}, user)
 
 
 def ConnectToMongo():
