@@ -12,7 +12,7 @@ client = discord.ext.commands.Bot(command_prefix="rc.")
 class apis(discord.ext.commands.Cog):
     def __init__(self, client):
         self.client = client
-        print('initalized: apis')
+        print('initialized: apis')
         connectToReddit()
         
 

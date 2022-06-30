@@ -6,7 +6,7 @@ client = discord.ext.commands.Bot(command_prefix="rc.")
 class admin_Tools(discord.ext.commands.Cog):
     def __init__(self, client):
         self.client = client
-    print("initalized: admin tools")
+    print("initialized: admin tools")
 
     @client.command()
     async def test(self, ctx):

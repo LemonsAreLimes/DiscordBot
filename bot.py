@@ -10,8 +10,6 @@ import src.mongo_stuff as moong
 Intents = discord.Intents.default()
 Intents.members = True
 
-print('initialized: bot')
-
 #defines the client and command prefex
 client = discord.ext.commands.Bot(command_prefix ='rc.', intents = Intents)
 
