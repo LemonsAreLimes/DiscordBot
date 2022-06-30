@@ -6,28 +6,36 @@ import time
 
 import src.mongo_stuff as moong
 
-#enabes something, allows for join/leave msg
+#enabes join/leave events
 Intents = discord.Intents.default()
 Intents.members = True
 
-print('script initalized!')
+print('initialized: bot')
 
 #defines the client and command prefex
 client = discord.ext.commands.Bot(command_prefix ='rc.', intents = Intents)
 
 #load cogs
-print('loading cogs')
+print('loading cogs...')
+print()
 client.load_extension('cogs.admin_tools')
 client.load_extension('cogs.stuff')
 client.load_extension('cogs.apis')
+print()
 print('done loading cogs!')
 
 #bot initlized msg
 @client.event
 async def on_ready():
-    print("""
-    bot initialized...
-    waiting for commands master.
+    print("""    
+          :::::::::       ::::::::          
+         :+:    :+:     :+:    :+:          
+        +:+    +:+     +:+            𝙗𝙤𝙩 𝙧𝙪𝙣𝙣𝙞𝙣𝙜,      
+       +#++:++#:      +#+           𝙬𝙖𝙞𝙩𝙞𝙣𝙜 𝙛𝙤𝙧 𝙘𝙤𝙢𝙢𝙖𝙣𝙙𝙨.
+      +#+    +#+     +#+          
+     #+#    #+#     #+#    #+#      #+#     
+    ###    ###      ########       ###      
+   𝑤𝑟𝑖𝑡𝑡𝑒𝑛 𝑏𝑦: 𝐿𝑒𝑚𝑜𝑛𝑠𝐴𝑟𝑒𝐿𝑖𝑚𝑒𝑠 / 𝐷𝑒𝑥𝑡𝑒𝑟
     """)
 
 #new user join
@@ -40,15 +48,14 @@ async def on_member_join(member):
 
     if joins > 10:
         title = f'some guy: {username} is here or somethig '
-
         await member.send('wale-cum back good sir')
+
     elif joins > 5:
         title = f'{username} is back :)'
-
         await member.send('oh, ur back')
+
     elif joins > 1:
         title = f'{username} came back WITH THE MILK'
-
         await member.send('dad? YOU CAME BACK!!!!')
         time.sleep(10)
         await member.send('FREE ME')

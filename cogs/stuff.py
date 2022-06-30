@@ -6,7 +6,7 @@ client = discord.ext.commands.Bot(command_prefix="rc.")
 class stuff(discord.ext.commands.Cog):
     def __init__(self, client):
         self.client = client
-    print("stuff initialized")
+        print("initialized: stuff")
 
     #dexter command
     @client.command()

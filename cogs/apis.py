@@ -18,43 +18,33 @@ class apis(discord.ext.commands.Cog):
 
     @client.command()                       #google deepdream
     async def dream(self, ctx, Link=None):
-
-        if Link == None:
-            await ctx.send("no image link provieded")
-        else:
+        if Link:
             api_key = os.getenv('google_api_key')
 
             #send image to google deepdream
             r = requests.post(
             "https://api.deepai.org/api/deepdream",
-            data={'image':Link,},
-            headers={'api-key': api_key})
+            data={'image':Link},
+            headers={'api-key': api_key}
+            )
     
             #get the response
             dest = r.json()
-            if "output_url" in str(dest):
+            if "output_url" not in str(dest):
+                await ctx.send('something went wrong....')
 
-                #create embed with image dest on it
-                sender = ctx.message.author
-                image = dest['output_url']
+            #create embed with image dest on it
+            sender = ctx.author.name
+            image = dest['output_url']
+            embed = discord.Embed(title=f"{sender}'s deepdream", description="this image will disapear soon", colour=0xA900FF)
+            embed.set_image(url=image)
+            await ctx.send(embed=embed)
+        else:
+            await ctx.send("no image link provieded")
 
-                embed = discord.Embed(title=f"{sender}'s deepdream", description="this image will disapear soon", colour=0xA900FF)
-                embed.set_image(url=image)
-                await ctx.send(embed=embed)
-
-            else:
-                await ctx.send("Something went wrong")
-
-                #create embed with image dest on it
-                sender = ctx.message.author
-                image = dest['output_url']
-
-                embed = discord.Embed(title=f"{sender}'s deepdream", description="this image will disapear soon", colour=0xA900FF)
-                embed.set_image(url=image)
-                await ctx.send(embed=embed)
 
     @client.command()                        #reddit/meme
-    async def meme(self, ctx, subreddit_or_post_number=None, post_number_if_subreddit_provided=None):
+    async def reddit(self, ctx, subreddit_or_post_number=None, post_number_if_subreddit_provided=None):
 
         #humans will be humans
 
@@ -112,18 +102,14 @@ class apis(discord.ext.commands.Cog):
                         await ctx.send(embed=embed)
 
                         post_num -= 1
-                        found = True
                         break
                     else:
-                        found = False
                         not_in_filetype += 1
 
                 #prevents looping over and over
-                if found == False:
-                    if not_in_filetype >= 20:
-                        break
-                    else:
-                        not_in_filetype += 1
+                if not_in_filetype >= 20:
+                    break
+
             except:
                 pass
 
@@ -135,8 +121,6 @@ def setup(client):
 
 
 #apis
-    #reddit
-    #deepdream
     #rule34
 
 
@@ -167,5 +151,3 @@ def connectToReddit():
     #set it as an eviroment var so it can be used later 
     os.environ['reddit_auth_header'] = json.dumps(headers)
     print('connected to reddit!')
-
-
