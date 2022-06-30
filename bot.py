@@ -14,6 +14,7 @@ Intents.members = True
 client = discord.ext.commands.Bot(command_prefix ='rc.', intents = Intents)
 
 #load cogs
+print()
 print('loading cogs...')
 print()
 client.load_extension('cogs.admin_tools')
@@ -21,6 +22,7 @@ client.load_extension('cogs.stuff')
 client.load_extension('cogs.apis')
 print()
 print('done loading cogs!')
+print()
 
 #bot initlized msg
 @client.event
@@ -82,7 +84,6 @@ async def on_member_remove(member):
 
     #update db and get leave msg
     joins = moong.mongo.UserLeave(member.id)
-
     username = member.display_name
 
     if joins > 10:
@@ -114,13 +115,12 @@ async def on_raw_reaction_add(payload):
 
     #check if the reaction was the verify msg
     if payload.channel_id == channel_id:
+
+        #define guild and user
         id = payload.user_id
         guild_id = 989980425529212999
         guild = client.get_guild(guild_id)
         user = await guild.fetch_member(id)
-
-        print(payload.emoji)
-        print(payload.emoji.name)
 
         emoji = payload.emoji.name
         if emoji == '✅':

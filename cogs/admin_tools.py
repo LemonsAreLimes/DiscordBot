@@ -14,15 +14,6 @@ class admin_Tools(discord.ext.commands.Cog):
         await ctx.send(f'latency: {reply_speed}ms')
 
     @client.command()
-    async def getRoles(self, ctx, user: discord.Member=None):
-        if user == None: 
-            user = ctx.author
-
-        roles = user.roles
-        roles.replace('@everyone', "EVREYONE")
-        await ctx.send(roles)
-
-    @client.command()
     async def mute(self, ctx, member: discord.Member=None):
         if 'administrator' in str(ctx.author.roles) and member != None :
             muted_role = discord.utils.get(member.guild.roles , id = 990039934725414953)
