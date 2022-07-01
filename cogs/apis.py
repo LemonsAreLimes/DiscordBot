@@ -113,7 +113,10 @@ class apis(discord.ext.commands.Cog):
             except:
                 pass
 
-   
+    @client.command() 
+    async def r34(self, ctx, images=1, tags=[]):
+        await ctx.send(tags)
+    
 
 
 def setup(client):
