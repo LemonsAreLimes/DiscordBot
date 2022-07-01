@@ -33,17 +33,17 @@ class admin_Tools(discord.ext.commands.Cog):
             await ctx.send('or something went wrong in dexters code....')
 
     @client.command()
-    async def purge(self, ctx, number=0):
+    async def purge(self, ctx, limit=0):
         if 'administrator' in str(ctx.author.roles):
-            messages = []   #messages within channel => i dont know how to do this lol
-            count = number
-            for msg in messages:
-                if count <= 0:
-                    break
-                else:
-                    count -= 1
-                    await msg.delete()
-            await ctx.send(f'deleted {number} messages')
+            
+            #get messages in channel
+            channel_messages = ctx.channel.history(limit=limit)
+
+            #start deleting
+            async for message in channel_messages:
+                await ctx.send(message)
+
+
         else:
             await ctx.send('ur not admin lol')
     
