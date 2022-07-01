@@ -41,8 +41,11 @@ class admin_Tools(discord.ext.commands.Cog):
 
             #start deleting
             async for message in channel_messages:
-                await ctx.send(message)
 
+                try:
+                    await message.delete()
+                except:
+                    print(f'message could not be deleted: {message}')
 
         else:
             await ctx.send('ur not admin lol')
