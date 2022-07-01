@@ -2,8 +2,6 @@ import discord
 import discord.ext.commands
 
 import os
-from matplotlib.pyplot import title
-from numpy import tile
 import rule34
 import requests
 import requests.auth
