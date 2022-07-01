@@ -147,9 +147,9 @@ class apis(discord.ext.commands.Cog):
             rand = random.randint(0, len(req))
 
             #get data
-            url       = req[rand]['file_url']
-            score     = req[rand]['score']
-            post_tags = req[rand]['tags']
+            url       = req[rand]['@file_url']
+            score     = req[rand]['@score']
+            post_tags = req[rand]['@tags']
 
             #create embed and send
             embed = discord.Embed(title=f'{ctx.author} searched r34 for {tags}', desription=f'score: {score}, tags: {post_tags}', color=0x06753A)
