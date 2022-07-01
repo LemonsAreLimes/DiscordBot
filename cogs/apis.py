@@ -2,6 +2,8 @@ import discord
 import discord.ext.commands
 
 import os
+from matplotlib.pyplot import title
+from numpy import tile
 import rule34
 import requests
 import requests.auth
@@ -115,9 +117,8 @@ class apis(discord.ext.commands.Cog):
                 pass
 
     @client.command() 
-    async def r34(self, ctx, images=None, tag1=None, tag2=None, tag3=None, tag4=None, tag5=None):
+    async def r34(self, ctx, images=None, tag1=None, tag2=None, tag3=None, tag4=None, tag5=None,):
         
-
         #images = how manny posts to show        
         if images == None or images.isnumeric() == False:
             images = 1          
@@ -136,18 +137,24 @@ class apis(discord.ext.commands.Cog):
         if tags == '':
             await ctx.send('provide some tags you horny bastard')
             return
-        
-        await ctx.send(f'images: {images}, tags: {tags}')
 
-        # rule34 = rule34.Sync()
-        # req = rule34.getImages(tags='mario blush gay')
+        #no documentation? 
+        rule34 = rule34.Sync()
+        req = rule34.getImages(tags=tags)
 
-        # print(req)
+        #select random post
+        for i in range(int(images)):
+            rand = random.randint(len(req))
 
-        # for i in req:
-        #     print(i.file_url)
-        #     print(i.score)
-        #     print(i.tags)
+            #get data
+            url       = req[rand].file_url
+            score     = req[rand].score
+            post_tags = req[rand].tags
+
+            #create embed and send
+            embed = discord.Embed(title=f'{ctx.author} searched r34 for {tags}', desription=f'score: {score}, tags: {post_tags}', color=0x06753A)
+            embed.set_image(url=url)
+            await ctx.send(embed=embed)
     
 
 
