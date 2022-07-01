@@ -119,7 +119,7 @@ class apis(discord.ext.commands.Cog):
         
 
         #images = how manny posts to show        
-        if images == None or type(images) != int:
+        if images == None or images.isnumeric() == False:
             images = 1          
         elif images > 5:
             images = 5
@@ -130,9 +130,12 @@ class apis(discord.ext.commands.Cog):
     
         for tag in tag_list:
             if tag != None:
-                tags += tag
+                tags += tag + ' '
 
-        
+        #prevent no tags
+        if tags == '':
+            await ctx.send('provide some tags you horny bastard')
+            return
         
         await ctx.send(f'images: {images}, tags: {tags}')
 
