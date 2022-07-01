@@ -10,6 +10,8 @@ import random
 
 client = discord.ext.commands.Bot(command_prefix="rc.")
 
+rule34 = rule34.Sync()
+
 class apis(discord.ext.commands.Cog):
     def __init__(self, client):
         self.client = client
@@ -137,7 +139,7 @@ class apis(discord.ext.commands.Cog):
             return
 
         #no documentation? 
-        req = await rule34.Rule34.getImages(tags=tags)
+        req = rule34.getImages(tags=tags)
 
         #select random post
         for i in range(int(images)):
