@@ -5,9 +5,8 @@ import os
 import requests
 import requests.auth
 import json
+import xmltodict
 import random
-
-import src.r34 as r34
 
 client = discord.ext.commands.Bot(command_prefix="rc.")
 
@@ -138,17 +137,19 @@ class apis(discord.ext.commands.Cog):
             await ctx.send('provide some tags you horny bastard')
             return
 
-        #i legit cant get this shit to work
-        req = r34.r34.pron(tags)
+        #get posts
+        data = requests.get(url=f'https://rule34.xxx/index.php?page=dapi&s=post&q=index&tags={tags}').content
+        parsed_data = xmltodict.parse(data)
+        req = json.dumps(parsed_data)['posts']['post']
 
         #select random post
         for i in range(int(images)):
             rand = random.randint(len(req))
 
             #get data
-            url       = req[rand].file_url
-            score     = req[rand].score
-            post_tags = req[rand].tags
+            url       = req[rand]['file_url']
+            score     = req[rand]['score']
+            post_tags = req[rand]['tags']
 
             #create embed and send
             embed = discord.Embed(title=f'{ctx.author} searched r34 for {tags}', desription=f'score: {score}, tags: {post_tags}', color=0x06753A)

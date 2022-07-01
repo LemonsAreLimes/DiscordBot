@@ -1,5 +1,4 @@
 discord
 requests
 pymongo
-dnspython
-rule34
+xmltodict
