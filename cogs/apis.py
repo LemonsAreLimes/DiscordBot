@@ -140,8 +140,7 @@ class apis(discord.ext.commands.Cog):
         #get posts
         data = requests.get(url=f'https://rule34.xxx/index.php?page=dapi&s=post&q=index&tags={tags}').content
         parsed_data = xmltodict.parse(data)
-        json_data = json.dumps(parsed_data)
-        req = json_data['posts']['post']
+        req = parsed_data['posts']['post']
 
         #select random post
         for i in range(int(images)):
