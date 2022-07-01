@@ -2,15 +2,15 @@ import discord
 import discord.ext.commands
 
 import os
-import rule34
 import requests
 import requests.auth
 import json
 import random
 
+import src.r34 as r34
+
 client = discord.ext.commands.Bot(command_prefix="rc.")
 
-rule34 = rule34.Sync()
 
 class apis(discord.ext.commands.Cog):
     def __init__(self, client):
@@ -138,8 +138,8 @@ class apis(discord.ext.commands.Cog):
             await ctx.send('provide some tags you horny bastard')
             return
 
-        #no documentation? 
-        req = await rule34.getImages(tags=tags)
+        #i legit cant get this shit to work
+        req = r34.r34.pron(tags)
 
         #select random post
         for i in range(int(images)):
