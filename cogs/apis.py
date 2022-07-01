@@ -115,7 +115,8 @@ class apis(discord.ext.commands.Cog):
                 pass
 
     @client.command() 
-    async def r34(self, ctx, images=1, tags=''):
+    async def r34(self, ctx, images=None, tag1=None, tag2=None, tag3=None, tag4=None, tag5=None):
+        tags = [tag1, tag2, tag3, tag4, tag5]
         await ctx.send(f'images: {images}, tags: {tags}')
 
         # rule34 = rule34.Sync()
