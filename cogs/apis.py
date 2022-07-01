@@ -121,7 +121,7 @@ class apis(discord.ext.commands.Cog):
         #images = how manny posts to show        
         if images == None or images.isnumeric() == False:
             images = 1          
-        elif images > 5:
+        elif int(images) > 5:
             images = 5
 
         #convert tags to string
