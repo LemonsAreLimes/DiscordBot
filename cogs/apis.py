@@ -116,7 +116,7 @@ class apis(discord.ext.commands.Cog):
     @client.command() 
     async def r34(self, ctx, images=1, tag1='', tag2='', tag3='', tag4='', tag5=''):
         tags = [tag1, tag2, tag3, tag4, tag5]
-        await ctx.send(images, tags)
+        await ctx.send(f'images: {images}, tags: {tags}')
     
 
 
