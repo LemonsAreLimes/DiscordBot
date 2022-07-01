@@ -144,7 +144,7 @@ class apis(discord.ext.commands.Cog):
 
         #select random post
         for i in range(int(images)):
-            rand = random.randint(len(req))
+            rand = random.randint(0, len(req))
 
             #get data
             url       = req[rand]['file_url']
