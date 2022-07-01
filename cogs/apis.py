@@ -139,7 +139,7 @@ class apis(discord.ext.commands.Cog):
             return
 
         #no documentation? 
-        req = rule34.getImages(tags=tags)
+        req = await rule34.getImages(tags=tags)
 
         #select random post
         for i in range(int(images)):
