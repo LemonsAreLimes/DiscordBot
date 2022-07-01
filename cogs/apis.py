@@ -152,7 +152,7 @@ class apis(discord.ext.commands.Cog):
             post_tags = req[rand]['@tags']
 
             #create embed and send
-            embed = discord.Embed(title=f'{ctx.author} searched r34 for {tags}', desription=f'score: {score}, tags: {post_tags}', color=0x06753A)
+            embed = discord.Embed(title=f'{ctx.author} searched r34 for {tags}', description=f'score: {score}, tags: {post_tags}', color=0x06753A)
             embed.set_image(url=url)
             await ctx.send(embed=embed)
     
