@@ -2,6 +2,7 @@ import discord
 import discord.ext.commands
 
 import os
+import rule34
 import requests
 import requests.auth
 import json
@@ -114,9 +115,18 @@ class apis(discord.ext.commands.Cog):
                 pass
 
     @client.command() 
-    async def r34(self, ctx, images=1, tag1='', tag2='', tag3='', tag4='', tag5=''):
-        tags = [tag1, tag2, tag3, tag4, tag5]
+    async def r34(self, ctx, images=1, tags=''):
         await ctx.send(f'images: {images}, tags: {tags}')
+
+        # rule34 = rule34.Sync()
+        # req = rule34.getImages(tags='mario blush gay')
+
+        # print(req)
+
+        # for i in req:
+        #     print(i.file_url)
+        #     print(i.score)
+        #     print(i.tags)
     
 
 

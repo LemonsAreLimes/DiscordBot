@@ -2,3 +2,4 @@ discord
 requests
 pymongo
 dnspython
+rule34
