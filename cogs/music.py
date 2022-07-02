@@ -1,5 +1,6 @@
 import discord
 import discord.ext.commands
+import youtube_dl
 
 client = discord.ext.commands.Bot(command_prefix="rc.")
 
@@ -7,7 +8,6 @@ class music(discord.ext.commands.Cog):
     def __init__(self, client):
         self.client = client
         print("initialized: music")
-
 
     @client.command()
     async def join(self, ctx):
@@ -29,11 +29,14 @@ class music(discord.ext.commands.Cog):
         await ctx.voice_client.disconnect()
 
     @client.command()
-    async def play(self, ctx, serch_term=None):
-        if serch_term != None:
-            #search yt 
-            #play audio
-            pass
+    async def play(self, ctx, url=None):
+        if url != None:
+
+            #i totally didnt steal this from a 2 year old video
+            server = ctx.message.guild 
+            voice_client = ctx.voice_client.create_ytdl_player(server)
+            await voice_client.create_ytdl_player(url).start()
+ 
 
         else:
             await ctx.send('give us something man')
