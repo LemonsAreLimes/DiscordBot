@@ -26,9 +26,17 @@ class music(discord.ext.commands.Cog):
 
     @client.command()
     async def leave(self, ctx):
-        pass
-        #leave vc with author
-        #must be only one in vc OR cast vote OR have the music stoped
+        #get memeber id from ctx
+        user_id = ctx.author.id
+        member = ctx.guild.get_member(user_id=user_id)
+        voice = member.voice 
+
+        #check if user is in voice channel
+        if voice != None:
+            await ctx.send('disconnecting...')
+            await voice.channel.disconnect()
+        else:
+            await ctx.send('you gotta be in the vc to do that!')
 
     @client.command()
     async def play(self, ctx, YTlink=None):
