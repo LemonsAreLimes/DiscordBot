@@ -12,16 +12,15 @@ class music(discord.ext.commands.Cog):
     @client.command()
     async def join(self, ctx):
         
-        user_id = ctx.author.id
-
-        member = ctx.guild.get_member(user_id=user_id)
-        
-        voice_channel = member.voice.channel 
-
         #get memeber id from ctx
-        if voice_channel != None:
+        user_id = ctx.author.id
+        member = ctx.guild.get_member(user_id=user_id)
+        voice = member.voice 
+
+        #check if user is in voice channel
+        if voice != None:
             await ctx.send(f'joining voice channel with {ctx.author}')
-            await voice_channel.connect()
+            await voice.channel.connect()
         else:
             await ctx.send('join a vc broh')
 
