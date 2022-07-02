@@ -21,15 +21,12 @@ class music(discord.ext.commands.Cog):
         if voice != None:
             await ctx.send(f'joining voice channel with {ctx.author}')
             await voice.channel.connect()
-            vc = client.voice_clients
-            await ctx.send(vc)
         else:
             await ctx.send('join a vc broh')
 
     @client.command()
     async def leave(self, ctx):
-        vc = client.voice_clients[0]
-        await ctx.send(vc)
+        await ctx.voice_client.disconnect()
 
     @client.command()
     async def play(self, ctx, YTlink=None):
