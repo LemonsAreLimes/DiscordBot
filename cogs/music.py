@@ -12,18 +12,15 @@ class music(discord.ext.commands.Cog):
     @client.command()
     async def join(self, ctx):
         
-        member_id = ctx.author.id
-        await ctx.send(member_id)
+        member = discord.Guild.get_member(ctx.author.id)
+        voice_channel = member.voice.channel 
 
-        # voice_channel = ctx.author
-
-        # #get memeber id from ctx
-
-        # if voice_channel != None:
-        #     await ctx.send(f'joining voice channel with {ctx.author}')
-        #     await voice_channel.connect()
-        # else:
-        #     await ctx.send('join a vc broh')
+        #get memeber id from ctx
+        if voice_channel != None:
+            await ctx.send(f'joining voice channel with {ctx.author}')
+            await voice_channel.connect()
+        else:
+            await ctx.send('join a vc broh')
 
     @client.command()
     async def leave(self, ctx):
