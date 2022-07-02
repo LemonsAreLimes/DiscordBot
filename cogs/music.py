@@ -1,6 +1,7 @@
 import discord
 import discord.ext.commands
-import youtube_dl
+from youtube_dl import YoutubeDL
+from discord import FFmpegPCMAudio
 
 client = discord.ext.commands.Bot(command_prefix="rc.")
 
@@ -32,12 +33,16 @@ class music(discord.ext.commands.Cog):
     async def play(self, ctx, url=None):
         if url != None:
 
-            #i totally didnt steal this from a 2 year old video
-            server = ctx.message.guild 
-            voice_client = ctx.voice_client.create_ytdl_player(server)
-            await voice_client.create_ytdl_player(url).start()
- 
+            #definetly not stolen from stack over flow ;)
+            ydl_opts = {'format': 'bestaudio', 'noplaylist':'True'}
+            FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
+            voice = ctx.voice_client
 
+            with YoutubeDL(ydl_opts) as ydl:
+                info = ydl.extract_info(url, download=False)
+            URL = info['formats'][0]['url']
+            voice.play(FFmpegPCMAudio(URL, **FFMPEG_OPTIONS))
+ 
         else:
             await ctx.send('give us something man')
 
