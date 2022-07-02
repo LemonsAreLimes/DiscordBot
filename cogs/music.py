@@ -20,14 +20,14 @@ class music(discord.ext.commands.Cog):
         #check if user is in voice channel
         if voice != None:
             await ctx.send(f'joining voice channel with {ctx.author}')
-            await voice.channel.VoiceClient.connect()
+            await voice.channel.connect()
         else:
             await ctx.send('join a vc broh')
 
     @client.command()
     async def leave(self, ctx):
-
-        await discord.VoiceClient.disconnect()
+        vc = client.voice_clients
+        await ctx.send(vc)
 
 
     @client.command()
