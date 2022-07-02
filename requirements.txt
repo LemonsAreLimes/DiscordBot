@@ -3,3 +3,4 @@ requests
 pymongo
 xmltodict
 PyNaCl
+youtube_dl
