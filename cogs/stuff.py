@@ -35,11 +35,7 @@ class stuff(discord.ext.commands.Cog):
 
         video_link = f'{video_link[:19]}pp{video_link[19:]}'
         await ctx.send(str(video_link))
-
-    @client.command()
-    async def racisim(self, ctx):
-        await ctx.send('I HATE NIGGERS!!!!!')
-
+        
 def setup(client):
     client.add_cog(stuff(client))
 
