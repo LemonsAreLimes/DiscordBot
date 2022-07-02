@@ -27,7 +27,7 @@ class music(discord.ext.commands.Cog):
     @client.command()
     async def leave(self, ctx):
 
-        await discord.VoiceClient.disconnect()
+        await ctx.guild.VoiceClient.disconnect()
 
 
     @client.command()
