@@ -11,8 +11,12 @@ class music(discord.ext.commands. Cog):
 
     @client.command()
     async def join(self, ctx):
-        pass
-        #join vc with author
+        voice_channel = ctx.author.voice.channel
+        if voice_channel != None:
+            await ctx.send(f'joining voice channel with {ctx.author}')
+            await voice_channel.connect()
+        else:
+            await ctx.send('join a vc broh')
 
     @client.command()
     async def leave(self, ctx):
