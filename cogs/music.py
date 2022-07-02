@@ -21,6 +21,8 @@ class music(discord.ext.commands.Cog):
         if voice != None:
             await ctx.send(f'joining voice channel with {ctx.author}')
             await voice.channel.connect()
+            vc = client.voice_clients
+            await ctx.send(vc)
         else:
             await ctx.send('join a vc broh')
 
