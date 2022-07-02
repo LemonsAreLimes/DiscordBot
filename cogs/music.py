@@ -29,15 +29,14 @@ class music(discord.ext.commands.Cog):
         await ctx.voice_client.disconnect()
 
     @client.command()
-    async def play(self, ctx, YTlink=None):
-        if YTlink != None:
-            pass
-            #check if the bot is in a vc with author
-            #check if its a youtube link
+    async def play(self, ctx, serch_term=None):
+        if serch_term != None:
+            #search yt 
             #play audio
+            pass
 
         else:
-            await ctx.send('please provide a link')
+            await ctx.send('give us something man')
 
     @client.command()
     async def stop(self, ctx):
