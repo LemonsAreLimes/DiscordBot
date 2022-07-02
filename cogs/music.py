@@ -12,7 +12,11 @@ class music(discord.ext.commands.Cog):
     @client.command()
     async def join(self, ctx):
         
-        member = discord.Guild.get_member(user_id=ctx.author.id)
+        guild_id = 989980425529212999
+        guild = client.get_guild(guild_id)
+
+        user_id = ctx.author.id
+        member = await guild.fetch_member(user_id)
         voice_channel = member.voice.channel 
 
         #get memeber id from ctx
