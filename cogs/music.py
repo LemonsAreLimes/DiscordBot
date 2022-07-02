@@ -14,7 +14,7 @@ class music(discord.ext.commands.Cog):
         
         user_id = ctx.author.id
 
-        member = await discord.Guild.fetch_member(self, member_id=user_id)
+        member = await discord.Guild.get_member(self=self, user_id=user_id)
         
         voice_channel = member.voice.channel 
 
