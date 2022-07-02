@@ -3,7 +3,7 @@ import discord.ext.commands
 
 client = discord.ext.commands.Bot(command_prefix="rc.")
 
-class music(discord.ext.commands. Cog):
+class music(discord.ext.commands.Cog):
     def __init__(self, client):
         self.client = client
         print("initialized: music")
