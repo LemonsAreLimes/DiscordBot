@@ -165,6 +165,8 @@ class apis(discord.ext.commands.Cog):
             ammount = 1
         elif int(ammount) > 5:
             ammount = 5
+        else:
+            ammount = int(ammount)
 
         #convert tags to string
         tag_list = [tag1, tag2, tag3, tag4, tag5]
@@ -178,8 +180,6 @@ class apis(discord.ext.commands.Cog):
         if tags == '':
             await ctx.send('provide some tags you horny furry')
             return
-
-        
 
         error_constant = 10 #some posts dont have a link
         ammount += error_constant
