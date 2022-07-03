@@ -116,13 +116,13 @@ class apis(discord.ext.commands.Cog):
                 pass
 
     @client.command() 
-    async def r34(self, ctx, images=None, tag1=None, tag2=None, tag3=None, tag4=None, tag5=None,):
+    async def r34(self, ctx, ammount=None, tag1=None, tag2=None, tag3=None, tag4=None, tag5=None,):
         
         #images = how manny posts to show        
-        if images == None or images.isnumeric() == False:
-            images = 1          
-        elif int(images) > 5:
-            images = 5
+        if ammount == None or ammount.isnumeric() == False:
+            ammount = 1          
+        elif int(ammount) > 5:
+            ammount = 5
 
         #convert tags to string
         tag_list = [tag1, tag2, tag3, tag4, tag5]
@@ -143,7 +143,7 @@ class apis(discord.ext.commands.Cog):
         req = parsed_data['posts']['post']
 
         #select random post
-        for i in range(int(images)):
+        for i in range(int(ammount)):
             rand = random.randint(0, len(req))
 
             #get data
@@ -156,6 +156,55 @@ class apis(discord.ext.commands.Cog):
             embed.set_image(url=url)
             await ctx.send(embed=embed)
     
+
+    @client.command() 
+    async def e621(self, ctx, ammount=None, tag1=None, tag2=None, tag3=None, tag4=None, tag5=None,):
+
+        #images = how manny posts to show        
+        if ammount == None or ammount.isnumeric() == False:
+            ammount = 1
+        elif int(ammount) > 5:
+            ammount = 5
+
+        #convert tags to string
+        tag_list = [tag1, tag2, tag3, tag4, tag5]
+        tags = ''
+    
+        for tag in tag_list:
+            if tag != None:
+                tags += tag + ' '
+
+        #prevent no tags
+        if tags == '':
+            await ctx.send('provide some tags you horny furry')
+            return
+
+        
+
+        error_constant = 10 #some posts dont have a link
+        ammount += error_constant
+
+        #get data from e621
+        headers = {'User-Agent': 'roboAPI/1.0 robocough'}
+        link = f'https://e621.net/posts.json/?limit={ammount}/?tags={tags}'
+        data = requests.get(url=link, headers=headers).content 
+        
+        #parse data and extract image links
+        parsed_data = json.loads(data)
+
+        images = []
+        for post in parsed_data['posts']:
+            image = post['file']['url']
+
+            if image != None and len(images) != ammount - error_constant:
+                images.append(image)
+
+        #send em
+        for img_url in images:
+            embed = discord.Embed(title=f'{ctx.author} searched for: {tags}')
+            embed.set_image(img_url)
+            await ctx.send(embed=embed)
+
 
 
 def setup(client):
