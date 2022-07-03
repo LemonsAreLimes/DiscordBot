@@ -9,6 +9,11 @@ class admin_Tools(discord.ext.commands.Cog):
     print("initialized: admin tools")
 
     @client.command()
+    async def getRoles(self, ctx):
+        user = ctx.author
+        await ctx.send(user.roles)
+
+    @client.command()
     async def test(self, ctx):
         reply_speed = round(self.client.latency * 1000)
         await ctx.send(f'latency: {reply_speed}ms')
