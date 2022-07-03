@@ -1,3 +1,4 @@
+from turtle import color
 import discord 
 import discord.ext.commands
 
@@ -201,7 +202,7 @@ class apis(discord.ext.commands.Cog):
 
         #send em
         for img_url in images:
-            embed = discord.Embed(title=f'{ctx.author} searched for: {tags}')
+            embed = discord.Embed(title=f'{ctx.author} searched for: {tags}', color=0x387AFF)
             embed.set_image(url=img_url)
             await ctx.send(embed=embed)
 
