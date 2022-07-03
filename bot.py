@@ -162,6 +162,18 @@ async def on_raw_reaction_add(payload):
             black = discord.utils.get(guild.roles, id=990040253081477140)
             await user.add_roles(black)
 
+        elif emoji == '☄️':
+            pron = discord.utils.get(guild.roles, id=990497984452104215)
+            await user.add_roles(pron)
+
+        elif emoji == '🥳':
+            notifications = discord.utils.get(guild.roles, id=990498079927046234)
+            await user.add_roles(notifications)
+
+        elif emoji == '😵‍💫':
+            retarted = discord.utils.get(guild.roles, id=990039934725414953)
+            await user.add_roles(retarted)
+
         else:
             print(emoji)
             print('emoji not found')
