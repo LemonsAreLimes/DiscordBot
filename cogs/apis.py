@@ -181,12 +181,12 @@ class apis(discord.ext.commands.Cog):
             await ctx.send('provide some tags you horny furry')
             return
 
-        error_constant = 10 #some posts dont have a link
+        error_constant = 20 #some posts dont have a link
         ammount += error_constant
 
         #get data from e621
         headers = {'User-Agent': 'roboAPI/1.0 robocough'}
-        link = f'https://e621.net/posts.json/?limit={ammount}/?tags={tags}'
+        link = f'https://e621.net/posts.json/?limit={ammount}/?tags={tags}/?order:random'
         data = requests.get(url=link, headers=headers).content 
         
         #parse data and extract image links
