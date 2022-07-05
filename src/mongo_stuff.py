@@ -26,7 +26,6 @@ class mongo():
                 data = {
                     "id":user_id,
                     "name": name,
-                    "messages": 0,
                     "bal": 0,
                     "in_server": True,
                     "joins": 1,
@@ -59,7 +58,6 @@ class mongo():
             data = {
                 "id":user_id,
                 "name": username,
-                "messages": 0,
                 "bal": 0,
                 "in_server": True,
                 "joins": 1,
