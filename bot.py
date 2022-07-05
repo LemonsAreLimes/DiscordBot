@@ -180,13 +180,13 @@ async def on_raw_reaction_add(payload):
             print('emoji not found')
 
 
-@client.event
-async def on_message(payload):
+# @client.event
+# async def on_message(payload):
     
-    guild_id = 989980425529212999
-    if payload.guild.id and payload.guild.id == guild_id:
-        id = payload.author.id
-        moong.mongo.msgUpdate(id)
+#     guild_id = 989980425529212999
+#     if payload.guild.id and payload.guild.id == guild_id:
+#         id = payload.author.id
+#         moong.mongo.msgUpdate(id)
 
 
 
