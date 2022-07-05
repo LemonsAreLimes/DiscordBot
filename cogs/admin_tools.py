@@ -58,11 +58,11 @@ class admin_Tools(discord.ext.commands.Cog):
             await ctx.send('ur not admin lol')
     
     @client.command()
-    async def createLog(self, ctx, member:discord.Member = None):
+    async def createLog(self, ctx, member: discord.Member = None):
         if 'administrator' in str(ctx.author.roles):
             if member != None:
                 id = member.id
-                username = member.display.name
+                username = member.display_name
                 
                 moong.CreateUser(id, username)
             else:
