@@ -69,6 +69,16 @@ class mongo():
 
             db.insert_one(data)
 
+    def msgUpdate(user_id=None):
+        if user_id != None:
+            db = ConnectToMongo()
+
+            user = db.find_one({"id":user_id})
+            if user != None:
+                user['messages'] += 1
+                db.find_one_and_replace({"id":user_id}, user)
+
+
 def ConnectToMongo():
     password = os.getenv('mongoPass')
     username = os.getenv('mongoName')

@@ -9,6 +9,7 @@ import src.mongo_stuff as moong
 #enabes join/leave events
 Intents = discord.Intents.default()
 Intents.members = True
+Intents.messages = True
 
 #defines the client and command prefex
 client = discord.ext.commands.Bot(command_prefix ='rc.', intents = Intents)
@@ -177,6 +178,18 @@ async def on_raw_reaction_add(payload):
         else:
             print(emoji)
             print('emoji not found')
+
+
+    @client.event
+    async def on_message(payload):
+        
+        guild_id = 989980425529212999
+
+        if payload.guild.id and payload.guild.id == guild_id:
+
+            id = payload.user_id
+            moong.mongo.msgUpdate(id)
+
 
 
 #events
