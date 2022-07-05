@@ -62,7 +62,7 @@ class admin_Tools(discord.ext.commands.Cog):
         if 'administrator' in str(ctx.author.roles):
             if member != None:
                 id = member.id
-                username = f'{member.discriminator}#{member.discriminator}'
+                username = f'{member.display_name}#{member.discriminator}'
                 roles = []
 
                 for role in member.roles:
