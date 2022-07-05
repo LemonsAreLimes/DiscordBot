@@ -52,6 +52,22 @@ class mongo():
                 db.find_one_and_replace({"id":user_id}, user)
                 return user['joins']
 
+    def CreateUser(user_id=None, username=None):
+        if id != None and username != None:
+            db = ConnectToMongo()
+
+            data = {
+                "id":user_id,
+                "name": username,
+                "messages": 0,
+                "bal": 0,
+                "in_server": True,
+                "joins": 1,
+                "roles" : None,
+                "command_useage": None
+            }
+
+            db.insert_one(data)
 
 def ConnectToMongo():
     password = os.getenv('mongoPass')
