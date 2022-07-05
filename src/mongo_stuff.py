@@ -52,7 +52,7 @@ class mongo():
                 db.find_one_and_replace({"id":user_id}, user)
                 return user['joins']
 
-    def CreateUser(user_id=None, username=None):
+    def CreateUser(user_id=None, username=None, roles=[]):
         if id != None and username != None:
             db = ConnectToMongo()
 
@@ -63,7 +63,7 @@ class mongo():
                 "bal": 0,
                 "in_server": True,
                 "joins": 1,
-                "roles" : None,
+                "roles" : roles,
                 "command_useage": None
             }
 

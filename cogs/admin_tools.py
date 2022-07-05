@@ -62,9 +62,13 @@ class admin_Tools(discord.ext.commands.Cog):
         if 'administrator' in str(ctx.author.roles):
             if member != None:
                 id = member.id
-                username = member.discriminator
+                username = f'{member.discriminator}#{member.discriminator}'
+                roles = []
+
+                for role in member.roles:
+                    roles.append(role.name)
                 
-                moong.CreateUser(id, username)
+                moong.CreateUser(id, username, roles)
             else:
                 await ctx.send('please provided a user')
 
