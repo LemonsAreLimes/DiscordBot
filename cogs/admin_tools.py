@@ -62,7 +62,7 @@ class admin_Tools(discord.ext.commands.Cog):
         if 'administrator' in str(ctx.author.roles):
             if member != None:
                 id = member.id
-                username = member.display_name
+                username = member.discriminator
                 
                 moong.CreateUser(id, username)
             else:
