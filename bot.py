@@ -185,7 +185,7 @@ async def on_message(payload):
     
     guild_id = 989980425529212999
     if payload.guild.id and payload.guild.id == guild_id:
-        id = payload.user_id
+        id = payload.author.id
         moong.mongo.msgUpdate(id)
 
 
