@@ -1,9 +1,9 @@
 import discord
-# from discord.ext import commands
+import discord.ext.commands
 
 from src.mongo_stuff import mongo as moong
 
-client = discord.Bot(command_prefix="rc.")
+client = discord.ext.commands.Bot(command_prefix="rc.")
 
 class admin_Tools(discord.ext.commands.Cog):
     def __init__(self, client):
@@ -11,7 +11,7 @@ class admin_Tools(discord.ext.commands.Cog):
     print("initialized: admin tools")
 
     @client.command()
-    async def roles(self, ctx):
+    async def getRoles(self, ctx):
         user = ctx.author
         await ctx.send(user.roles)
 
@@ -58,7 +58,7 @@ class admin_Tools(discord.ext.commands.Cog):
             await ctx.send('ur not admin lol')
     
     @client.command()
-    async def log(self, ctx, member: discord.Member = None):
+    async def createLog(self, ctx, member: discord.Member = None):
         if 'administrator' in str(ctx.author.roles):
             if member != None:
                 id = member.id
