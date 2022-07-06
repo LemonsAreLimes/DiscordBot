@@ -18,7 +18,7 @@ class games(discord.ext.commands.Cog):
         print("initialized: games")
 
     @client.command()
-    async def MenuTest(self, ctx):
+    async def gametest(self, ctx):
         await ctx.send("okay this part worked", View=View())
 
     # @client.command()

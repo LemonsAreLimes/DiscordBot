@@ -11,7 +11,7 @@ class admin_Tools(discord.ext.commands.Cog):
     print("initialized: admin tools")
 
     @client.command()
-    async def getRoles(self, ctx):
+    async def roles(self, ctx):
         user = ctx.author
         await ctx.send(user.roles)
 
@@ -58,7 +58,7 @@ class admin_Tools(discord.ext.commands.Cog):
             await ctx.send('ur not admin lol')
     
     @client.command()
-    async def createLog(self, ctx, member: discord.Member = None):
+    async def log(self, ctx, member: discord.Member = None):
         if 'administrator' in str(ctx.author.roles):
             if member != None:
                 id = member.id
