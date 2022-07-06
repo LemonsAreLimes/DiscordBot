@@ -1,5 +1,5 @@
 import os
-import discord.ext.commands
+from discord.ext import commands
 import discord.reaction
 import time
 import discord
@@ -12,7 +12,7 @@ Intents.members = True
 Intents.messages = True
 
 #defines the client and command prefex
-bot = discord.Bot(command_prefix ='rc.', intents = Intents)
+bot = commands.Bot(command_prefix ='rc.', intents = Intents)
 
 #load cogs
 print()
