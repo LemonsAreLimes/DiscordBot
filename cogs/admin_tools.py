@@ -3,7 +3,7 @@ import discord.ext.commands
 
 from src.mongo_stuff import mongo as moong
 
-client = discord.ext.commands.Bot(command_prefix="rc.")
+client = discord.Bot(command_prefix="rc.")
 
 class admin_Tools(discord.ext.commands.Cog):
     def __init__(self, client):

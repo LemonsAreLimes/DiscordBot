@@ -10,7 +10,7 @@ class View(discord.ui.View):
         await interaction.response.send_message('clicked button')
 
 
-client = discord.ext.commands.Bot(command_prefix="rc.")
+client = discord.Bot(command_prefix="rc.")
 
 class games(discord.ext.commands.Cog):
     def __init__(self, client):
