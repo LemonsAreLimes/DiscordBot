@@ -2,6 +2,7 @@ import os
 import discord.ext.commands
 import discord.reaction
 import time
+import discord
 
 import src.mongo_stuff as moong
 
