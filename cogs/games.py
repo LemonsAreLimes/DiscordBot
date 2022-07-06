@@ -1,8 +1,8 @@
 # import discord
 # import discord.ext.commands
 
-# #game libs (cleans up help command)
-# from src.GAME_coinflp import coinflip
+# # #game libs (cleans up help command)
+# # from src.GAME_coinflp import coinflip
 
 
 # client = discord.ext.commands.Bot(command_prefix="rc.")
@@ -13,14 +13,18 @@
 #         print("initialized: games")
 
 #     @client.command()
-#     async def flip(self, ctx):
-#         coin = coinflip.gen()
-#         print(coin)
+#     async def MenuTest(self, ctx):
+#         button = 
 
-#         buttons = [
-#             create_butt
+#     # @client.command()
+#     # async def flip(self, ctx):
+#     #     coin = coinflip.gen()
+#     #     print(coin)
 
-#         ]
+#     #     buttons = [
+#     #         create_butt
+
+#     #     ]
 
 
 # def setup(client):

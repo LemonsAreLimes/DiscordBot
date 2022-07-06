@@ -1,5 +1,4 @@
 import os
-import discord
 import discord.ext.commands
 import discord.reaction
 import time
