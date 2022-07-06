@@ -25,6 +25,14 @@ print()
 print('done loading cogs!')
 print()
 
+@client.slash_command(name='this')
+async def hello(ctx):
+    await ctx.send('fuck you')
+
+@client.command()
+async def bye(ctx):
+    await ctx.send('fuc kytou too')
+
 #bot initlized msg
 @client.event
 async def on_ready():
