@@ -11,7 +11,7 @@ Intents.members = True
 Intents.messages = True
 
 #defines the client and command prefex
-client = discord.Bot(command_prefix ='rc.')
+client = discord.ext.commands.Bot(command_prefix ='rc.', intents = Intents)
 
 #load cogs
 print()
