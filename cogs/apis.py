@@ -120,12 +120,16 @@ class apis(discord.ext.commands.Cog):
         
         #images = how manny posts to show        
         if ammount == None or ammount.isnumeric() == False:
-            ammount = 1          
+            tag_list = [ammount, tag1, tag2, tag3, tag4, tag5]
+            count = 1       
         elif int(ammount) > 5:
-            ammount = 5
+            count = 5
+            tag_list = [tag1, tag2, tag3, tag4, tag5]
+        else:
+            tag_list = [tag1, tag2, tag3, tag4, tag5]
 
         #convert tags to string
-        tag_list = [tag1, tag2, tag3, tag4, tag5]
+        
         tags = ''
     
         for tag in tag_list:
@@ -143,7 +147,7 @@ class apis(discord.ext.commands.Cog):
         req = parsed_data['posts']['post']
 
         #select random post
-        for i in range(int(ammount)):
+        for i in range(int(count)):
             rand = random.randint(0, len(req))
 
             #get data
