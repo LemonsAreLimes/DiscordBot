@@ -18,20 +18,20 @@ print()
 print('loading cogs...')
 print()
 client.load_extension('cogs.admin_tools')
-# client.load_extension('cogs.stuff')
-# client.load_extension('cogs.apis')
+client.load_extension('cogs.stuff')
+client.load_extension('cogs.apis')
 # client.load_extension('cogs.music')
 print()
 print('done loading cogs!')
 print()
 
-@client.slash_command(name='this')
-async def hello(ctx):
-    await ctx.send('fuck you')
+# @client.slash_command(name='this')
+# async def hello(ctx):
+#     await ctx.send('fuck you')
 
-@client.command()
-async def bye(ctx):
-    await ctx.send('fuc kytou too')
+# @client.command()
+# async def bye(ctx):
+#     await ctx.send('fuc kytou too')
 
 #bot initlized msg
 @client.event
