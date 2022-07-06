@@ -205,4 +205,4 @@ async def test(ctx):
 
 #connect bot to discord
 Token = os.getenv("token")
-client.run(Token)
+bot.run(Token)
