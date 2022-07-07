@@ -1,6 +1,7 @@
 import os
 import discord.ext.commands
 import discord.reaction
+import discord
 import time
 
 import src.mongo_stuff as moong
@@ -11,7 +12,7 @@ Intents.members = True
 Intents.messages = True
 
 #defines the client and command prefex
-client = discord.ext.commands.Bot(command_prefix ='rc.', intents = Intents)
+client = discord.ext.commands.Bot(command_prefix ='rc.', intents=discord.Intents.all())
 
 #load cogs
 print()

@@ -1,5 +1,5 @@
-# py-cord==2.0.0rc1
-discord.py
+py-cord==2.0.0rc1
+# discord.py
 pymongo
 dnspython
 requests
