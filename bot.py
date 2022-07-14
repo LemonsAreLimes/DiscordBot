@@ -6,11 +6,6 @@ import time
 
 import src.mongo_stuff as moong
 
-#enabes join/leave events
-Intents = discord.Intents.default()
-Intents.members = True
-Intents.messages = True
-
 #defines the client and command prefex
 client = discord.ext.commands.Bot(command_prefix ='rc.', intents=discord.Intents.all())
 
@@ -21,6 +16,7 @@ print()
 client.load_extension('cogs.admin_tools')
 client.load_extension('cogs.stuff')
 client.load_extension('cogs.apis')
+# client.load_extension('cogs.games')
 # client.load_extension('cogs.music')
 print()
 print('done loading cogs!')
