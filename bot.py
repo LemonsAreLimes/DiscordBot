@@ -5,6 +5,7 @@ import discord
 import time
 
 import src.mongo_stuff as moong
+from . import config as c
 
 #defines the client and command prefex
 client = discord.ext.commands.Bot(command_prefix ='rc.', intents=discord.Intents.all())
@@ -33,16 +34,7 @@ print()
 #bot initlized msg
 @client.event
 async def on_ready():
-    print("""    
-          :::::::::       ::::::::          
-         :+:    :+:     :+:    :+:          
-        +:+    +:+     +:+            𝙗𝙤𝙩 𝙧𝙪𝙣𝙣𝙞𝙣𝙜,      
-       +#++:++#:      +#+           𝙬𝙖𝙞𝙩𝙞𝙣𝙜 𝙛𝙤𝙧 𝙘𝙤𝙢𝙢𝙖𝙣𝙙𝙨.
-      +#+    +#+     +#+          
-     #+#    #+#     #+#    #+#      #+#     
-    ###    ###      ########       ###      
-   𝑤𝑟𝑖𝑡𝑡𝑒𝑛 𝑏𝑦: 𝐿𝑒𝑚𝑜𝑛𝑠𝐴𝑟𝑒𝐿𝑖𝑚𝑒𝑠 / 𝐷𝑒𝑥𝑡𝑒𝑟
-    """)
+    print(c.config.start_message)
 
 #new user join
 @client.event
