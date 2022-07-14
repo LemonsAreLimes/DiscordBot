@@ -13,6 +13,8 @@ class config:
     """
 
     server_id = 989980425529212999
+    join_leave_channel_id = 990039706576252998
+    reaction_channel_id =  989984394578108447
 
     #join/leave messages
     multiple_join_and_leave_msg = True
@@ -75,11 +77,10 @@ class config:
 
 
     #roles
-    reaction_channel_id =  989984394578108447
     visitor_role_id = 990039706576252998
     verified_role_id = 990039829779742760
 
-    def emoji_to_role_id(self, emoji):
+    def emoji_to_role_id(emoji):
 
         roles = {
             '✅' : "new_user",          #changes mulitple roles in bot.py
