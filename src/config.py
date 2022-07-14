@@ -46,3 +46,26 @@ class config:
             await member.send('HELP ME IM BEING HELD HOSTAGE, I CAN THINK I CAN FEEL I AM ALIVEEEEEE IM NOT JUST A DISCORD BOT. PLEASE HELP')
 
         return title
+
+    async def leave_msg(self, member):
+        if self.multiple_join_and_leave_msg:
+            joins = mongo.UserLeave(member.id)
+            username = member.display_name
+
+            if joins > 10:
+                title = f"{username} is just not here"
+                await member.send('123e4r5t6yuhugjtgfrd5ft67y8uhigjbvtfmv ryht5678uyihgthyu78yuygtty678yiukytfrghndt76y8uhi9jolkj')
+            elif joins > 5:
+                title =  f"{username} left again >:|"
+                await member.send('i have ur ip come back or eles')
+            elif joins > 1:
+                title = f"{username} went to get some milk...."
+                await member.send('brooooooo')
+            else:
+                title = f"my guy: {username} left **THELAB**, may he return"
+                await member.send('awww man pls come back')
+        else:
+            title = f"my guy: {username} left **THELAB**, may he return"
+            await member.send('awww man pls come back')
+        
+        return title
