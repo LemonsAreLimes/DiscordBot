@@ -14,11 +14,11 @@ client = discord.ext.commands.Bot(command_prefix ='rc.', intents=discord.Intents
 print()
 print('loading cogs...')
 print()
-client.load_extension('cogs.admin_tools')
-client.load_extension('cogs.stuff')
-client.load_extension('cogs.apis')
-# client.load_extension('cogs.games')
-# client.load_extension('cogs.music')
+
+for cog in config.cogs:
+    client.load_extension(cog)
+
+
 print()
 print('done loading cogs!')
 print()

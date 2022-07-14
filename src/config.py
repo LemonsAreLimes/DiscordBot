@@ -16,6 +16,14 @@ class config:
     join_leave_channel_id = 990039706576252998
     reaction_channel_id =  989984394578108447
 
+    cogs = {
+        'cogs.admin_tools',
+        'cogs.stuff',
+        'cogs.apis',
+        # 'cogs.games',
+        # 'cogs.music',
+    }
+
     #join/leave messages
     multiple_join_and_leave_msg = True
 
