@@ -5,7 +5,7 @@ import discord
 import time
 
 import src.mongo_stuff as moong
-from .config import config
+from src.config import config
 
 #defines the client and command prefex
 client = discord.ext.commands.Bot(command_prefix ='rc.', intents=discord.Intents.all())
