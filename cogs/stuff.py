@@ -1,4 +1,3 @@
-from click import command
 import discord
 import discord.ext.commands
 from src.config import config
