@@ -79,6 +79,7 @@ class config:
     #roles
     visitor_role_id = 990039706576252998
     verified_role_id = 990039829779742760
+    muted_role_id = 990039934725414953
 
     def emoji_to_role_id(emoji):
 

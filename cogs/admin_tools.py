@@ -1,5 +1,6 @@
 import discord
 import discord.ext.commands
+from src.config import config
 
 from src.mongo_stuff import mongo as moong
 
@@ -23,7 +24,7 @@ class admin_Tools(discord.ext.commands.Cog):
     @client.command()
     async def mute(self, ctx, member: discord.Member=None):
         if 'administrator' in str(ctx.author.roles) and member != None :
-            muted_role = discord.utils.get(member.guild.roles , id = 990039934725414953)
+            muted_role = discord.utils.get(member.guild.roles , id = config.muted_role_id)
             member.add_roles(muted_role)
         else:
             await ctx.send('define a user to mute, or... become admin')
