@@ -1,6 +1,3 @@
-from src.mongo_stuff import mongo
-from os import getenv
-
 #well hello! welcome to the config file
 # this currently is a private bot.. does not support multiple servers 
 # current build runs on heroku, online 24/7
@@ -51,16 +48,7 @@ class config:
         # 'cogs.music',
     }
 
-    if mongo_db :
-        def gen_mongo_link():
-        
-            password = getenv('mongoPass')
-            username = getenv('mongoName')
-            link = f"mongodb+srv://{username}:{password}@sitelogging.ccoj7.mongodb.net/?retryWrites=true&w=majority"
-
-            return link
   
-
     async def join_msg(self, member=None):
         if self.multiple_join_and_leave_msg:
 
