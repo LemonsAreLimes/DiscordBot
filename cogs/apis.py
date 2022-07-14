@@ -8,7 +8,9 @@ import json
 import xmltodict
 import random
 
-client = discord.ext.commands.Bot(command_prefix="rc.")
+from src.config import config
+
+client = discord.ext.commands.Bot(command_prefix=config.command_prefix)
 
 
 class apis(discord.ext.commands.Cog):

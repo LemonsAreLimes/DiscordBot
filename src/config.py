@@ -24,6 +24,8 @@ class config:
         # 'cogs.music',
     }
 
+    command_prefix = "rc."
+
     #join/leave messages
     multiple_join_and_leave_msg = True
 

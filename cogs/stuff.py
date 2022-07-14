@@ -1,7 +1,9 @@
+from click import command
 import discord
 import discord.ext.commands
+from src.config import config
 
-client = discord.ext.commands.Bot(command_prefix="rc.")
+client = discord.ext.commands.Bot(command_prefix=config.command_prefix)
 
 class stuff(discord.ext.commands.Cog):
     def __init__(self, client):

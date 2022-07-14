@@ -8,7 +8,7 @@ import src.mongo_stuff as moong
 from src.config import config
 
 #defines the client and command prefex
-client = discord.ext.commands.Bot(command_prefix ='rc.', intents=discord.Intents.all())
+client = discord.ext.commands.Bot(command_prefix = config.command_prefix, intents=discord.Intents.all())
 
 #load cogs
 print()

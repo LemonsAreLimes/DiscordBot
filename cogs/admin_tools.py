@@ -4,7 +4,7 @@ from src.config import config
 
 from src.mongo_stuff import mongo as moong
 
-client = discord.ext.commands.Bot(command_prefix="rc.")
+client = discord.ext.commands.Bot(command_prefix=config.command_prefix)
 
 class admin_Tools(discord.ext.commands.Cog):
     def __init__(self, client):
