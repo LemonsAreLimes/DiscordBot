@@ -12,6 +12,9 @@ class config:
    𝑤𝑟𝑖𝑡𝑡𝑒𝑛 𝑏𝑦: 𝐿𝑒𝑚𝑜𝑛𝑠𝐴𝑟𝑒𝐿𝑖𝑚𝑒𝑠 / 𝐷𝑒𝑥𝑡𝑒𝑟
     """
 
+    server_id = 989980425529212999
+
+    #join/leave messages
     multiple_join_and_leave_msg = True
 
     async def join_msg(self, member=None):
@@ -47,7 +50,7 @@ class config:
 
         return title
 
-    async def leave_msg(self, member):
+    async def leave_msg(self, member): 
         if self.multiple_join_and_leave_msg:
             joins = mongo.UserLeave(member.id)
             username = member.display_name
@@ -69,3 +72,34 @@ class config:
             await member.send('awww man pls come back')
         
         return title
+
+
+    #roles
+    reaction_channel_id =  989984394578108447
+    visitor_role_id = 990039706576252998
+    verified_role_id = 990039829779742760
+
+    def emoji_to_role_id(self, emoji):
+
+        roles = {
+            '✅' : "new_user",          #changes mulitple roles in bot.py
+            '🇷' : 990039992799752192,
+            '🇬' : 990040077902180443,
+            '🇧' : 990040103512571924,
+            '🇨' : 990040131874480158,
+            '🇲' : 990040172118827060,
+            '🇾' : 990040219053097050,
+            '🇰' : 990040253081477140,
+            '☄️' : 990497984452104215,
+            '🥳' : 990498079927046234,
+            '😵‍💫' : 990039934725414953,
+        }
+
+        role_id = roles.get(emoji)
+
+        if role_id == None:
+            print('invalid emoji!')
+            return None
+        
+        else:
+            return role_id
