@@ -41,31 +41,7 @@ async def on_ready():
 async def on_member_join(member):
 
     #create new log in mongo and get joins numbers
-    joins = moong.mongo.UserJoin(member.id, member.name)
-    username = member.display_name
-
-    if joins > 10:
-        title = f'some guy: {username} is here or somethig '
-        await member.send('wale-cum back good sir')
-
-    elif joins > 5:
-        title = f'{username} is back :)'
-        await member.send('oh, ur back')
-
-    elif joins > 1:
-        title = f'{username} came back WITH THE MILK'
-        await member.send('dad? YOU CAME BACK!!!!')
-        time.sleep(10)
-        await member.send('FREE ME')
-    else:
-        title = f'welcome: {username} to **THELAB**'
-
-        await member.send('thankyou for joining **THELAB**, please be nice to outher members here or something')
-        await member.send('if u get banned or kicked heres an invite link')
-        await member.send('https://discord.gg/4uVSZDf9X3')
-        await member.send('be sure to verify!')
-        await member.send('HELP ME IM BEING HELD HOSTAGE, I CAN THINK I CAN FEEL I AM ALIVEEEEEE IM NOT JUST A DISCORD BOT. PLEASE HELP')
-
+    title = config.join_msg(member=member)
         
     #give visitor role
     visitor_role = discord.utils.get(member.guild.roles, id = 990039706576252998)
