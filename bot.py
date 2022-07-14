@@ -41,7 +41,7 @@ async def on_ready():
 async def on_member_join(member):
 
     #create new log in mongo and get joins numbers
-    title = config.join_msg(self=config, member=member)
+    title = await config.join_msg(self=config, member=member)
         
     #give visitor role
     visitor_role = discord.utils.get(member.guild.roles, id = 990039706576252998)
@@ -56,7 +56,7 @@ async def on_member_join(member):
 @client.event
 async def on_member_remove(member):
 
-    title = config.leave_msg(self=config, member=member)
+    title = await config.leave_msg(self=config, member=member)
   
     #say they left in new users channel
     welcome_channel_id = 990364347446460426
