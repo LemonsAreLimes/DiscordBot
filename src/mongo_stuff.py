@@ -1,5 +1,6 @@
 from pymongo.server_api import ServerApi
 from pymongo.mongo_client import MongoClient
+from src.config import config
 
 import os 
 
@@ -78,8 +79,7 @@ class mongo():
 
 
 def ConnectToMongo():
-    password = os.getenv('mongoPass')
-    username = os.getenv('mongoName')
-    client = MongoClient(f"mongodb+srv://{username}:{password}@sitelogging.ccoj7.mongodb.net/?retryWrites=true&w=majority", server_api=ServerApi('1'))
+    link = config.gen_mongo_link()
+    client = MongoClient(link, server_api=ServerApi('1'))
     db = client['Discord_bot']['user_logging']
     return db

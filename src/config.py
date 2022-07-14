@@ -1,4 +1,19 @@
 from src.mongo_stuff import mongo
+from os import getenv
+
+#well hello! welcome to the config file
+# this currently is a private bot.. does not support multiple servers 
+# current build runs on heroku, online 24/7
+
+# you will need to manually set config vars for:
+#   mongo username + password
+#   google api key
+#   reddit password + api key + auth header (blank)
+#   and, of course the bot token
+
+# want to learn more? talk to the author?
+# join the discord server => https://discord.gg/4uVSZDf9X3
+# ngl its prolly dead, not manny ppl are in it
 
 class config:
     start_message = """    
@@ -12,10 +27,22 @@ class config:
    𝑤𝑟𝑖𝑡𝑡𝑒𝑛 𝑏𝑦: 𝐿𝑒𝑚𝑜𝑛𝑠𝐴𝑟𝑒𝐿𝑖𝑚𝑒𝑠 / 𝐷𝑒𝑥𝑡𝑒𝑟
     """
 
+    #general stuff
+    command_prefix = "rc."
     server_id = 989980425529212999
+    multiple_join_and_leave_msg = True
+    mongo_db = True #must manually remove refrences to mongo db in join/leave msg func
+    
+    #channel ids
     join_leave_channel_id = 990039706576252998
     reaction_channel_id =  989984394578108447
 
+    #roles
+    visitor_role_id = 990039706576252998
+    verified_role_id = 990039829779742760
+    muted_role_id = 990039934725414953
+
+    #cogs to load (some are still in development)
     cogs = {
         'cogs.admin_tools',
         'cogs.stuff',
@@ -24,10 +51,15 @@ class config:
         # 'cogs.music',
     }
 
-    command_prefix = "rx."
+    if mongo_db :
+        def gen_mongo_link():
+        
+            password = getenv('mongoPass')
+            username = getenv('mongoName')
+            link = f"mongodb+srv://{username}:{password}@sitelogging.ccoj7.mongodb.net/?retryWrites=true&w=majority"
 
-    #join/leave messages
-    multiple_join_and_leave_msg = True
+            return link
+  
 
     async def join_msg(self, member=None):
         if self.multiple_join_and_leave_msg:
@@ -85,11 +117,6 @@ class config:
         
         return title
 
-
-    #roles
-    visitor_role_id = 990039706576252998
-    verified_role_id = 990039829779742760
-    muted_role_id = 990039934725414953
 
     def emoji_to_role_id(emoji):
 
