@@ -1,3 +1,5 @@
+from src.mongo_stuff import mongo
+
 #well hello! welcome to the config file
 # this currently is a private bot.. does not support multiple servers 
 # current build runs on heroku, online 24/7
@@ -44,7 +46,7 @@ class config:
         'cogs.admin_tools',
         'cogs.stuff',
         'cogs.apis',
-        # 'cogs.games',
+        'cogs.games',
         # 'cogs.music',
     }
 
