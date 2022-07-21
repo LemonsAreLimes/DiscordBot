@@ -76,6 +76,16 @@ class mongo():
                 user['messages'] += 1
                 db.find_one_and_replace({"id":user_id}, user)
 
+    def addCoins(user_id=None, coins=None):
+        if user_id != None and coins != None:
+            db = ConnectToMongo()
+
+            user = db.find_one({"id":user_id})
+            if user != None:
+                user['bal'] += coins
+                db.find_one_and_replace({"id":user_id}, user)
+        else:
+            print("invalad perams")
 
 def ConnectToMongo():
     password = os.getenv('mongoPass')
