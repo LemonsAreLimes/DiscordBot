@@ -2,7 +2,7 @@ import discord
 import discord.ext.commands
 
 # #game libs (cleans up help command)
-from src.GAME_coinflp import cfButtons
+from src.games.coinflp import cfButtons
 
 client = discord.ext.commands.Bot(command_prefix ='rc.', intents=discord.Intents.all())
 

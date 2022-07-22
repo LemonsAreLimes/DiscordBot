@@ -18,12 +18,12 @@ class cfButtons(discord.ui.View):
         if flip:
             coins = config.cf_coins
             button.style = discord.ButtonStyle.green
-            await interaction.response.edit_message(content="you won!", view=self)
+            await interaction.response.edit_message(content=f"you've been awarded {config.cf_coins} coins", view=self)
 
         else:
             coins = 0-(config.cf_coins)
             button.style = discord.ButtonStyle.red
-            await interaction.response.edit_message(content="you lost..", view=self)
+            await interaction.response.edit_message(content=f"you've been deducted {config.cf_coins} coins", view=self)
 
         mongo.addCoins(user_id, coins)
 
@@ -39,11 +39,11 @@ class cfButtons(discord.ui.View):
         if flip:
             coins = config.cf_coins
             button.style = discord.ButtonStyle.green
-            await interaction.response.edit_message(content="you won!", view=self)
+            await interaction.response.edit_message(content=f"you've been awarded {config.cf_coins} coins", view=self)
 
         else:
             coins = 0-(config.cf_coins)
             button.style = discord.ButtonStyle.red
-            await interaction.response.edit_message(content="you lost..", view=self)
+            await interaction.response.edit_message(content=f"you've been deducted {config.cf_coins} coins", view=self)
 
         mongo.addCoins(user_id, coins)
